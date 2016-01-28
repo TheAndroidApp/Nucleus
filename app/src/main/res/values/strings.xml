@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">nucleus.</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="stats">Usage Stats</string>
     <string name="settings">Settings</string>

@@ -7,16 +7,13 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 public class SplashActivity extends AppCompatActivity {
-
     //Splash Timer
     private static int SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        //        For creating a full-screen activity. Since we're extending AppCompat library add request feauture() here.
+        //For creating a full-screen activity.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
