@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:id="@+id/group_stats"
-        android:checkableBehavior="single">
+    <group android:id="@+id/group_stats" android:checkableBehavior="single">
 
         <item
             android:id="@+id/stats"
@@ -11,24 +9,22 @@
             android:icon="@drawable/ic_stats"
             android:title="@string/stats" />
     </group>
+        <item android:title="Nucleus Settings">
+            <menu>
+                <group android:id="@+id/group_settings" android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/settings"
+                        android:checked="false"
+                        android:icon="@drawable/ic_settings"
+                        android:title="@string/settings" />
 
-    <item android:title="Nucleus Settings">
-        <menu>
-            <group
-                android:id="@+id/group_settings"
-                android:checkableBehavior="single">
-                <item
-                    android:id="@+id/settings"
-                    android:checked="false"
-                    android:icon="@drawable/ic_settings"
-                    android:title="@string/settings" />
+                    <item
+                        android:id="@+id/about"
+                        android:checked="false"
+                        android:icon="@drawable/ic_about"
+                        android:title="@string/about" />
+                </group>
+            </menu>
+        </item>
 
-                <item
-                    android:id="@+id/about"
-                    android:checked="false"
-                    android:icon="@drawable/ic_about"
-                    android:title="@string/about" />
-            </group>
-        </menu>
-    </item>
 </menu>
