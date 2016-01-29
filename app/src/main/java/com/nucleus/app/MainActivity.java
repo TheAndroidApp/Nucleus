@@ -126,4 +126,6 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
 
     }
-}
+
+    }
+

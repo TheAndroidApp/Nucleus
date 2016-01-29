@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="Inbox"
+        android:id="@+id/nav_item_inbox"/>
+
+    <item android:title="Sent"
+        android:id="@+id/nav_item_sent"/>
+
+    <item android:title="Drafts"
+        android:id="@+id/nav_item_draft"/>
+
+
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:title="Spam"/>
+            <item
+                android:title="Bin"/>
+        </menu>
+    </item>
+
+    <group android:id="@+id/group_settings_id">
+
+        <item android:title="Settings"/>
+        <item android:title="Help"/>
+    </group>
+
+
+</menu>
