@@ -6,4 +6,7 @@
     <string name="about">About Us</string>
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
+    <string name="create">Create Group</string>
+    <string name="join">Join Group</string>
+    <string name="camera">Camera</string>
 </resources>
