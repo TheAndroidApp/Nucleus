@@ -100,15 +100,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                if (menuItem.getItemId() == R.id.nav_item_sent) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new SentFragment()).commit();
+                if (menuItem.getItemId() == R.id.stats) {
+                    Toast.makeText(getApplicationContext(), "Usage Stats Selected", Toast.LENGTH_SHORT).show();
+                    return true;
 
                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_inbox) {
-                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+                if (menuItem.getItemId() == R.id.settings) {
+
+                    Toast.makeText(getApplicationContext(),"Settings Selected",Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                if (menuItem.getItemId() == R.id.about) {
+
+                    Toast.makeText(getApplicationContext(),"About Us Selected",Toast.LENGTH_SHORT).show();
+                    return true;
                 }
 
                 return false;
