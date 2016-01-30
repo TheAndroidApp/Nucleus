@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_menu_black_24dp));
 
-
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();

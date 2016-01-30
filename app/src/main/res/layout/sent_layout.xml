@@ -21,7 +21,7 @@
         android:textSize="15sp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:text="androidbelieve.com"
+        android:text="Usage Stats"
         android:textColor="#000"
         android:layout_below="@+id/textView"
         android:textStyle="italic"/>
