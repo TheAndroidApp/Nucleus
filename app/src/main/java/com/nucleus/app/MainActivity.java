@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_menu_black_24dp));
 
+
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();
@@ -45,17 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
         SubActionButton.Builder itemBuilder1 = new SubActionButton.Builder(this);
         ImageView cameraIcon = new ImageView(this);
-        cameraIcon.setImageDrawable(getDrawable(R.drawable.ic_add_a_photo_black_24dp));
+        cameraIcon.setImageDrawable(getDrawable(R.drawable.ic_add_a_photo_black_18dp));
         SubActionButton cameraButton = itemBuilder1.setContentView(cameraIcon).build();
 
         SubActionButton.Builder itemBuilder2 = new SubActionButton.Builder(this);
         ImageView groupIcon = new ImageView(this);
-        groupIcon.setImageDrawable(getDrawable(R.drawable.ic_group_add_black_24dp));
+        groupIcon.setImageDrawable(getDrawable(R.drawable.ic_group_add_black_18dp));
         SubActionButton groupButton = itemBuilder2.setContentView(groupIcon).build();
 
         SubActionButton.Builder itemBuilder3 = new SubActionButton.Builder(this);
         ImageView wifiIcon = new ImageView(this);
-        wifiIcon.setImageDrawable(getDrawable(R.drawable.ic_wifi_tethering_black_24dp));
+        wifiIcon.setImageDrawable(getDrawable(R.drawable.ic_wifi_tethering_black_18dp));
         SubActionButton wifiButton = itemBuilder3.setContentView(wifiIcon).build();
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
@@ -85,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.shitstuff) ;
+        mNavigationView = (NavigationView) findViewById(R.id.shitstuff);
 
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+        mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
 
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -99,16 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.closeDrawers();
 
 
-
                 if (menuItem.getItemId() == R.id.nav_item_sent) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new SentFragment()).commit();
+                    fragmentTransaction.replace(R.id.containerView, new SentFragment()).commit();
 
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_inbox) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+                    xfragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
                 }
 
                 return false;
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
                 R.string.app_name);
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -127,5 +127,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    }
+}
 
