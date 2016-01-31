@@ -68,7 +68,13 @@ public class MainActivity extends AppCompatActivity {
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Camera option selected ", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Camera option selected ", Toast.LENGTH_SHORT).show();
+                //final static int cameraData = 0;
+                //final int cameraData = 0;
+                Intent startCamera = new Intent(MainActivity.this, Camera.class);
+                startActivity(startCamera);
+//                startActivityForResult(startCamera, cameraData);
+
             }
         });
         groupButton.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +131,25 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
 
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK){
+//            Bundle extras = data.getExtras();
+//            bmp = (Bitmap) extras.get("data");
+//            iv.setImageBitmap(bmp);
+//
+//
+//            Bundle basket = new Bundle();
+//            Intent a = new Intent(Data.this, OpenedClass.class);
+//            a.putExtras(basket);
+//            startActivity(a);
+//
+//
+//        }
+//    }
 
 }
 
