@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3f729b">
+    android:background="@color/PrimaryDarkColor">
 
     <!--Add a sutable background image and logo here-->
     <!-- -->
