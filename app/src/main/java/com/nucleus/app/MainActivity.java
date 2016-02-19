@@ -12,6 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.view.LayoutInflater;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
@@ -24,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mNavigationView;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
+    private TextView resultText;
+    private String username;
+    private String gPassword;
+    private String gPasswordConf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageView icon = new ImageView(this); // Create an icon
-        icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
+
+        resultText = (TextView) findViewById(R.id.result);
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -82,7 +92,49 @@ public class MainActivity extends AppCompatActivity {
         wifiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Create Group option selected ", Toast.LENGTH_SHORT).show();
+                LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+                View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                alertDialogBuilder.setView(promptView);
+                final EditText editText = (EditText) promptView.findViewById(R.id.edittext);
+                final EditText groupPassEnter = (EditText) promptView.findViewById(R.id.groupPassEnter);
+                final EditText groupPassConf = (EditText) promptView.findViewById(R.id.groupPassEnterConf);
+
+
+                // setup a dialog window
+                alertDialogBuilder.setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (editText.getText().toString().trim().equalsIgnoreCase(""))
+                                    editText.setError("This field can not be blank");
+                                username = editText.getText().toString();
+                                gPassword = groupPassEnter.getText().toString();
+                                gPasswordConf = groupPassConf.getText().toString();
+                                if(username.equals("")){
+                                    Toast.makeText(getApplicationContext(),"Username has to be entered.", Toast.LENGTH_SHORT).show();
+                                }
+                                else if(gPassword.equals("")||gPasswordConf.equals("")){
+                                    Toast.makeText(getApplicationContext(),"Enter and confirm password please.", Toast.LENGTH_SHORT).show();
+                                }
+                                else if(gPassword.length()<6||gPassword.length()>32) {
+                                    Toast.makeText(getApplicationContext(), "Password must contain 6-32 characters.", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),username+" has been created", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // create an alert dialog
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
             }
         });
 
