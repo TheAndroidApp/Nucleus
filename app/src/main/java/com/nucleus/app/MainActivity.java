@@ -95,47 +95,51 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
                 View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-                alertDialogBuilder.setView(promptView);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 final EditText editText = (EditText) promptView.findViewById(R.id.edittext);
                 final EditText groupPassEnter = (EditText) promptView.findViewById(R.id.groupPassEnter);
                 final EditText groupPassConf = (EditText) promptView.findViewById(R.id.groupPassEnterConf);
 
+                builder.setView(promptView);
+                builder.setTitle("Create Group");
+                builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                // setup a dialog window
-                alertDialogBuilder.setCancelable(false)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                if (editText.getText().toString().trim().equalsIgnoreCase(""))
-                                    editText.setError("This field can not be blank");
-                                username = editText.getText().toString();
-                                gPassword = groupPassEnter.getText().toString();
-                                gPasswordConf = groupPassConf.getText().toString();
-                                if(username.equals("")){
-                                    Toast.makeText(getApplicationContext(),"Username has to be entered.", Toast.LENGTH_SHORT).show();
-                                }
-                                else if(gPassword.equals("")||gPasswordConf.equals("")){
-                                    Toast.makeText(getApplicationContext(),"Enter and confirm password please.", Toast.LENGTH_SHORT).show();
-                                }
-                                else if(gPassword.length()<6||gPassword.length()>32) {
-                                    Toast.makeText(getApplicationContext(), "Password must contain 6-32 characters.", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(getApplicationContext(),username+" has been created", Toast.LENGTH_SHORT).show();
-                                }
+                    }
+                });
 
-                            }
-                        })
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                // create an alert dialog
-                AlertDialog alert = alertDialogBuilder.create();
-                alert.show();
+                    }
+                });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        username=editText.getText().toString();
+                        gPassword = groupPassEnter.getText().toString();
+                        gPasswordConf = groupPassConf.getText().toString();
+                        //Do stuff, possibly set wantToCloseDialog to true then...
+                        if (editText.getText().toString().equals(""))
+                            editText.setError("Please enter a group name.");
+                        else if (groupPassEnter.getText().toString().equals("") || groupPassConf.getText().toString().equals("")) {
+                            groupPassEnter.setError("Please enter and confirm password.");
+                        } else if (groupPassEnter.getText().toString().length() < 6 || groupPassEnter.getText().toString().length() > 32) {
+                            groupPassEnter.setError("Password must contain 6-32 characters.");
+                        } else if (!gPassword.equalsIgnoreCase(gPasswordConf)) {
+                            groupPassEnter.setError("Please enter same passwords to confirm.");
+                        } else {
+                            dialog.dismiss();
+                            Toast.makeText(getApplicationContext(),username+" has been created", Toast.LENGTH_SHORT).show();
+                        }
+                        //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
+                    }
+                });//Set to null. We override the onclick
+
             }
         });
 
