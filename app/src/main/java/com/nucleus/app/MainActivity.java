@@ -182,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Location Selected", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.about:
-                        Toast.makeText(getApplicationContext(), "About Selected", Toast.LENGTH_SHORT).show();
+                        Intent about_intent = new Intent(MainActivity.this,AboutUs.class);
+                        startActivity(about_intent);
                         return true;
                     default:
                         Toast.makeText(getApplicationContext(), "Something is Wrong", Toast.LENGTH_SHORT).show();
