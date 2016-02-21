@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:id="@+id/group_stats" android:checkableBehavior="single">
 
@@ -13,10 +14,15 @@
             <menu>
                 <group android:id="@+id/group_settings" android:checkableBehavior="single">
                     <item
-                        android:id="@+id/settings"
+                        android:id="@+id/theme"
+                        app:actionLayout="@layout/action_view_switch"
+                        android:icon="@drawable/ic_invert_colors_black_24dp"
+                        android:title="Dark Theme"/>
+                    <item
+                        android:id="@+id/location"
                         android:checked="false"
-                        android:icon="@drawable/ic_settings"
-                        android:title="@string/settings" />
+                        android:icon="@drawable/ic_get_app_black_24dp"
+                        android:title="@string/location" />
 
                     <item
                         android:id="@+id/about"

@@ -1,7 +1,7 @@
 package com.nucleus.app;
 
 import android.content.Intent;
-import android.support.design.widget.NavigationView;;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageView icon = new ImageView(this); // Create an icon
+        icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
 
         resultText = (TextView) findViewById(R.id.result);
 
@@ -170,8 +171,11 @@ public class MainActivity extends AppCompatActivity {
 
                     // For rest of the options we just show a toast on click
 
-                    case R.id.settings:
-                        Toast.makeText(getApplicationContext(), "Settings Selected", Toast.LENGTH_SHORT).show();
+                    case R.id.theme:
+                        Toast.makeText(getApplicationContext(), "Theme Selected", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.location:
+                        Toast.makeText(getApplicationContext(), "Location Selected", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.about:
                         Toast.makeText(getApplicationContext(), "About Selected", Toast.LENGTH_SHORT).show();

@@ -88,11 +88,11 @@ public class TabFragment extends Fragment{
 
             switch (position){
                 case 0 :
-                    return "Tab 1";
+                    return "Gallery";
                 case 1 :
-                    return "Tab 2";
+                    return "Send Files";
                 case 2 :
-                    return "Tab 3";
+                    return "Received Files";
             }
             return null;
         }
