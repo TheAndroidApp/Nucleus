@@ -17,13 +17,13 @@
     <!--android:textSize="30sp" />-->
 
 
-    <ImageView
-        android:id="@+id/galleryIcon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:foregroundGravity="center_horizontal"
-        android:src="@drawable/gallery" />
+    <!--<ImageView-->
+        <!--android:id="@+id/galleryIcon"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:foregroundGravity="center_horizontal"-->
+        <!--android:src="@drawable/gallery" />-->
 
 
     <Button

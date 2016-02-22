@@ -2,7 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:id="@+id/group_stats" android:checkableBehavior="single">
+    <group
+        android:id="@+id/group_stats"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/stats"
@@ -10,27 +12,29 @@
             android:icon="@drawable/ic_stats"
             android:title="@string/stats" />
     </group>
-        <item android:title="Nucleus Settings">
-            <menu>
-                <group android:id="@+id/group_settings" android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/theme"
-                        app:actionLayout="@layout/action_view_switch"
-                        android:icon="@drawable/ic_invert_colors_black_24dp"
-                        android:title="Dark Theme"/>
-                    <item
-                        android:id="@+id/location"
-                        android:checked="false"
-                        android:icon="@drawable/ic_get_app_black_24dp"
-                        android:title="@string/location" />
+    <item android:title="Nucleus Settings">
+        <menu>
+            <group
+                android:id="@+id/group_settings"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/theme"
+                    android:icon="@drawable/ic_invert_colors_black_24dp"
+                    android:title="Dark Theme"
+                    app:actionLayout="@layout/action_view_switch" />
+                <item
+                    android:id="@+id/location"
+                    android:checked="false"
+                    android:icon="@drawable/ic_get_app_black_24dp"
+                    android:title="@string/location" />
 
-                    <item
-                        android:id="@+id/about"
-                        android:checked="false"
-                        android:icon="@drawable/ic_about"
-                        android:title="@string/about" />
-                </group>
-            </menu>
-        </item>
+                <item
+                    android:id="@+id/about"
+                    android:checked="false"
+                    android:icon="@drawable/ic_about"
+                    android:title="@string/about" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

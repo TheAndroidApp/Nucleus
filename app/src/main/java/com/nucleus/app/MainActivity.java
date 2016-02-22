@@ -49,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
     String switchOff = "Switch is OFF";
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
-        if(useDarkTheme) {
+        if (useDarkTheme) {
             setTheme(R.style.AppTheme_Dark_NoActionBar);
         }
 
@@ -261,23 +262,24 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
     }
-        private void toggleTheme(boolean darkTheme) {
-            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-            editor.putBoolean(PREF_DARK_THEME, darkTheme);
-            editor.apply();
 
-            Intent intent = getIntent();
-            finish();
+    private void toggleTheme(boolean darkTheme) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
 
-            startActivity(intent);
+        Intent intent = getIntent();
+        finish();
+
+        startActivity(intent);
 
     }
 
 
-    public void startGallery(View v){
+    public void startGallery(View v) {
 
         Button startGallery = (Button) findViewById(R.id.btnGallery);
-        startGallery.setOnClickListener(new View.OnClickListener(){
+        startGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startCamera = new Intent(MainActivity.this, GridViewActivity.class);
