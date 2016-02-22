@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.app.AlertDialog;
@@ -212,6 +213,19 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+    }
+
+    public void startGallery(View v){
+
+        Button startGallery = (Button) findViewById(R.id.btnGallery);
+        startGallery.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent startCamera = new Intent(MainActivity.this, GridViewActivity.class);
+                startActivity(startCamera);
+            }
+        });
 
     }
 }
