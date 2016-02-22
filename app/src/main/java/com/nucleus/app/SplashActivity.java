@@ -1,15 +1,21 @@
 package com.nucleus.app;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Handler;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
     //Splash Timer
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 10000;
+    private ImageView image;
+    private TransitionDrawable trans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,13 @@ public class SplashActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
+
+        image = (ImageView)findViewById(R.id.image);
+        Resources res = this.getResources();
+        trans = (TransitionDrawable)res.getDrawable(R.drawable.transition);
+        image.setImageDrawable(trans);
+        trans.reverseTransition(10000);
+
 
         new Handler().postDelayed(new Runnable() {
 
