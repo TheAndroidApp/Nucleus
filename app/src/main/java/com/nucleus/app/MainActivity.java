@@ -1,6 +1,7 @@
 package com.nucleus.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -43,12 +44,19 @@ public class MainActivity extends AppCompatActivity {
     TextView textView, textView2;
     String switchOn = "Switch is ON";
     String switchOff = "Switch is OFF";
+    private static final String PREFS_NAME = "prefs";
+    private static final String PREF_DARK_THEME = "dark_theme";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        final boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+        if(useDarkTheme) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
         //Set the switch to False initially.
@@ -223,26 +231,18 @@ public class MainActivity extends AppCompatActivity {
 
                 switchButton = (Switch) findViewById(R.id.mySwitch);
 
-
+                switchButton.setChecked(useDarkTheme);
                 switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
-                        if (bChecked) {
-
-                            Toast.makeText(getApplicationContext(), "Switch is ON", Toast.LENGTH_SHORT).show();
-                        } else {
-
-                            Toast.makeText(getApplicationContext(), "Switch is OFF", Toast.LENGTH_SHORT).show();
-                        }
+                        toggleTheme(bChecked);
                     }
                 });
 
                 if (switchButton.isChecked()) {
 
-                    Toast.makeText(getApplicationContext(), "Switch is ON", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Toast.makeText(getApplicationContext(), "Switch is OFF", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -258,5 +258,17 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
     }
+        private void toggleTheme(boolean darkTheme) {
+            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putBoolean(PREF_DARK_THEME, darkTheme);
+            editor.apply();
+
+            Intent intent = getIntent();
+            finish();
+
+            startActivity(intent);
+
+    }
+
 }
 
