@@ -1,6 +1,7 @@
 package com.nucleus.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,10 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.widget.Checkable;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Button;
+=======
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+>>>>>>> origin/master
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,19 +43,33 @@ public class MainActivity extends AppCompatActivity {
     private String username;
     private String gPassword;
     private String gPasswordConf;
-
+    private Switch mySwitch;
+    Switch switchButton, switchButton2;
+    TextView textView, textView2;
+    String switchOn = "Switch is ON";
+    String switchOff = "Switch is OFF";
+    private static final String PREFS_NAME = "prefs";
+    private static final String PREF_DARK_THEME = "dark_theme";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        final boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+        if(useDarkTheme) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+        //Set the switch to False initially.
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
 
         resultText = (TextView) findViewById(R.id.result);
 
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+        final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();
 
@@ -121,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        username=editText.getText().toString();
+                        username = editText.getText().toString();
                         gPassword = groupPassEnter.getText().toString();
                         gPasswordConf = groupPassConf.getText().toString();
                         //Do stuff, possibly set wantToCloseDialog to true then...
@@ -135,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                             groupPassEnter.setError("Please enter same passwords to confirm.");
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(getApplicationContext(),username+" has been created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), username + " has been created", Toast.LENGTH_SHORT).show();
                         }
                         //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
                     }
@@ -150,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
 
         /* Tab Fragments Initialized Here */
         mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction= mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -176,14 +199,11 @@ public class MainActivity extends AppCompatActivity {
 
                     // For rest of the options we just show a toast on click
 
-                    case R.id.theme:
-                        Toast.makeText(getApplicationContext(), "Theme Selected", Toast.LENGTH_SHORT).show();
-                        return true;
                     case R.id.location:
                         Toast.makeText(getApplicationContext(), "Location Selected", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.about:
-                        Intent about_intent = new Intent(MainActivity.this,AboutUs.class);
+                        Intent about_intent = new Intent(MainActivity.this, AboutUs.class);
                         startActivity(about_intent);
                         return true;
                     default:
@@ -195,27 +215,66 @@ public class MainActivity extends AppCompatActivity {
 
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.openDrawer, R.string.closeDrawer){
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer) {
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 // Code here will be triggered once the drawer closes as we don't want anything to happen so we leave this blank
                 super.onDrawerClosed(drawerView);
+                actionButton.setEnabled(true);
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
                 // Code here will be triggered once the drawer open as we don't want anything to happen so we leave this blank
-
                 super.onDrawerOpened(drawerView);
+                final LayoutInflater factory = getLayoutInflater();
+
+                final View switchView = factory.inflate(R.layout.action_view_switch, null);
+
+
+                switchButton = (Switch) findViewById(R.id.mySwitch);
+
+                switchButton.setChecked(useDarkTheme);
+                switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
+                        toggleTheme(bChecked);
+                    }
+                });
+
+                if (switchButton.isChecked()) {
+
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float offset) {
+                actionButton.setAlpha(1 - offset);
+
+                actionButton.setEnabled(false);
+
             }
         };
-
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+    }
+        private void toggleTheme(boolean darkTheme) {
+            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putBoolean(PREF_DARK_THEME, darkTheme);
+            editor.apply();
+
+            Intent intent = getIntent();
+            finish();
+
+            startActivity(intent);
 
     }
 
+<<<<<<< HEAD
     public void startGallery(View v){
 
         Button startGallery = (Button) findViewById(R.id.btnGallery);
@@ -228,5 +287,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+=======
+>>>>>>> origin/master
 }
 

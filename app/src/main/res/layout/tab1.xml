@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+<<<<<<< HEAD
         android:layout_centerInParent="true"
         android:layout_weight="1"
         android:background="@drawable/button_gallery"
@@ -38,5 +39,14 @@
         android:padding="15dp"
         android:text="Open Gallery"
         android:textColor="#ffffff" />
+=======
+        android:textSize="30sp"
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:textColor="#007EE5"
+        android:text="n u c l e u s"
+        android:layout_gravity="center_horizontal" />
+>>>>>>> origin/master
 
 </RelativeLayout>
