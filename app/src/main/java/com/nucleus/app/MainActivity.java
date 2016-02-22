@@ -13,12 +13,11 @@ import android.util.Log;
 import android.widget.Checkable;
 import android.view.MenuItem;
 import android.view.View;
-<<<<<<< HEAD
+
 import android.widget.Button;
-=======
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
->>>>>>> origin/master
+
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -274,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
+
     public void startGallery(View v){
 
         Button startGallery = (Button) findViewById(R.id.btnGallery);
@@ -287,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-=======
->>>>>>> origin/master
+
 }
 
