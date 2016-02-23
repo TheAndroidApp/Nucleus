@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:src="@drawable/color_selector1"
         />
-    <!--Add a sutable background image and logo here-->
+    <!--Add a suitable background image and logo here-->
     <!-- -->
     <!--<ImageView-->
     <!--android:layout_width="match_parent"-->
@@ -24,7 +24,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
-        android:text="nucleus"
+        android:text="nucleus."
         android:textColor="#ffffff"
         android:textSize="56sp"
         android:typeface="normal" />

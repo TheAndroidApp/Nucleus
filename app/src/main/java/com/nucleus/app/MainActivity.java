@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
         if (useDarkTheme) {

@@ -40,7 +40,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
         app:itemIconTint="@drawable/state_list"
-        app:itemTextColor="@drawable/state_list"
         app:menu="@menu/drawer"
         />
 </android.support.v4.widget.DrawerLayout>

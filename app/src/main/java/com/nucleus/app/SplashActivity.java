@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
     //Splash Timer
-    private static int SPLASH_TIME_OUT = 10000;
+    private static int SPLASH_TIME_OUT = 3000;
     private ImageView image;
     private TransitionDrawable trans;
 
@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         Resources res = this.getResources();
         trans = (TransitionDrawable)res.getDrawable(R.drawable.transition);
         image.setImageDrawable(trans);
-        trans.reverseTransition(10000);
+        trans.reverseTransition(3000);
 
 
         new Handler().postDelayed(new Runnable() {
