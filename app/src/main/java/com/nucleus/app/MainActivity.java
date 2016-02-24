@@ -57,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
         if (useDarkTheme) {
-            setTheme(R.style.AppTheme_Dark_NoActionBar);
+            setTheme(R.style.AppTheme_Dark);
+
         }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //Set the switch to False initially.
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
 
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 final EditText groupPassConf = (EditText) promptView.findViewById(R.id.groupPassEnterConf);
 
                 builder.setView(promptView);
-                builder.setTitle("Create Group");
+                builder.setTitle("CREATE GROUP");
                 builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -235,21 +234,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                 switchButton = (Switch) findViewById(R.id.mySwitch);
-
                 switchButton.setChecked(useDarkTheme);
-                switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                switchButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                     @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
-                        toggleTheme(bChecked);
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        toggleTheme(isChecked);
                     }
                 });
-
-                if (switchButton.isChecked()) {
-
-                } else {
-
-                }
-
             }
 
             @Override

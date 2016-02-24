@@ -2,9 +2,7 @@
 <resources>
     <color name="PrimaryColor">#007EE5</color>
     <color name="PrimaryDarkColor">#005499</color>
-    <color name="LightTextColor">#FFFFFF</color>
-    <color name="DarkTextColor">#47525D</color>
-    <color name="darkColorPrimary">#1e2756</color>
-    <color name="darkColorPrimaryDark">#141831</color>
-    <color name="darkColorAccent">#2aac4b</color>
+    <color name="DarkTextColor">#FFFFFF</color>
+    <color name="LightTextColor">#47525D</color>
+    <color name="Silver">#C0C0C0</color>
 </resources>
