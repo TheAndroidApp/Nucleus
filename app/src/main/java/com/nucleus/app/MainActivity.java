@@ -77,17 +77,17 @@ public class MainActivity extends AppCompatActivity {
         SubActionButton.Builder itemBuilder1 = new SubActionButton.Builder(this);
         ImageView cameraIcon = new ImageView(this);
         cameraIcon.setImageDrawable(getDrawable(R.drawable.ic_add_a_photo_black_18dp));
-        SubActionButton cameraButton = itemBuilder1.setContentView(cameraIcon).build();
+        final SubActionButton cameraButton = itemBuilder1.setContentView(cameraIcon).build();
 
         SubActionButton.Builder itemBuilder2 = new SubActionButton.Builder(this);
         ImageView groupIcon = new ImageView(this);
         groupIcon.setImageDrawable(getDrawable(R.drawable.ic_group_add_black_18dp));
-        SubActionButton groupButton = itemBuilder2.setContentView(groupIcon).build();
+        final SubActionButton groupButton = itemBuilder2.setContentView(groupIcon).build();
 
         SubActionButton.Builder itemBuilder3 = new SubActionButton.Builder(this);
         ImageView wifiIcon = new ImageView(this);
         wifiIcon.setImageDrawable(getDrawable(R.drawable.ic_wifi_tethering_black_18dp));
-        SubActionButton wifiButton = itemBuilder3.setContentView(wifiIcon).build();
+        final SubActionButton wifiButton = itemBuilder3.setContentView(wifiIcon).build();
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(cameraButton)
@@ -222,6 +222,9 @@ public class MainActivity extends AppCompatActivity {
                 // Code here will be triggered once the drawer closes as we don't want anything to happen so we leave this blank
                 super.onDrawerClosed(drawerView);
                 actionButton.setEnabled(true);
+                cameraButton.setEnabled(true);
+                groupButton.setEnabled(true);
+                wifiButton.setEnabled(true);
             }
 
             @Override
@@ -246,8 +249,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerSlide(View drawerView, float offset) {
                 actionButton.setAlpha(1 - offset);
-
+                cameraButton.setAlpha(1-offset);
+                groupButton.setAlpha(1-offset);
+                wifiButton.setAlpha(1-offset);
                 actionButton.setEnabled(false);
+                cameraButton.setEnabled(false);
+                groupButton.setEnabled(false);
+                wifiButton.setEnabled(false);
 
             }
         };
