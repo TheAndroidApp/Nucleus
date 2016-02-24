@@ -26,17 +26,19 @@
         <!--android:src="@drawable/gallery" />-->
 
 
-    <Button
-        android:id="@+id/btnGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_centerInParent="true"
-        android:layout_weight="1"
-        android:background="@drawable/button_gallery"
-        android:onClick="startGallery"
-        android:padding="15dp"
-        android:text="Open Gallery"
-        android:textColor="#ffffff" />
+    <!--<Button-->
+        <!--android:id="@+id/btnGallery"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@drawable/button_gallery"-->
+        <!--android:onClick="startGallery"-->
+        <!--android:padding="15dp"-->
+        <!--android:text="Open Gallery"-->
+        <!--android:textColor="#ffffff" />-->
+
+    <include layout="@layout/activity_grid_view"></include>
 
 </RelativeLayout>
