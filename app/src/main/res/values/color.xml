@@ -5,4 +5,5 @@
     <color name="DarkTextColor">#FFFFFF</color>
     <color name="LightTextColor">#47525D</color>
     <color name="Silver">#C0C0C0</color>
+    <color name="Black">#000000</color>
 </resources>

@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/group_name"
         android:id="@+id/textView"
-        android:textSize="14sp"
-        android:textColor="@color/LightTextColor" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/edittext"
@@ -25,8 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:id="@+id/groupPass"
-        android:textSize="14sp"
-        android:textColor="@color/LightTextColor" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/groupPassEnter"
@@ -41,8 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/confirm_pass"
         android:id="@+id/groupPassConf"
-        android:textSize="14sp"
-        android:textColor="@color/LightTextColor" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/groupPassEnterConf"
