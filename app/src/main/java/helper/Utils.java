@@ -63,7 +63,8 @@ public class Utils {
         } else {
             AlertDialog.Builder alert = new AlertDialog.Builder(_context);
             alert.setTitle("Error!");
-            alert.setMessage(AppConstant.PHOTO_ALBUM
+            alert.setMessage(android.os.Environment.getExternalStorageDirectory()
+                    + File.separator + AppConstant.PHOTO_ALBUM
                     + " directory path is not valid! Please set the image directory name AppConstant.java class");
             alert.setPositiveButton("OK", null);
             alert.show();

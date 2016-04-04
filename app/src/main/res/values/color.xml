@@ -6,4 +6,10 @@
     <color name="LightTextColor">#47525D</color>
     <color name="Silver">#C0C0C0</color>
     <color name="Black">#000000</color>
+
+
+    <!-- WiFi Direct Values-->
+
+    <color name="status_bar_color">#FF000000</color>
+    <color name="layout_border_color">#FF111111</color>
 </resources>

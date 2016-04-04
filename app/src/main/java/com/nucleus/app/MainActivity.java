@@ -2,6 +2,7 @@ package com.nucleus.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
                 View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                final EditText editText = (EditText) promptView.findViewById(R.id.edittext);
+                final EditText groupName = (EditText) promptView.findViewById(R.id.edittext);
                 final EditText groupPassEnter = (EditText) promptView.findViewById(R.id.groupPassEnter);
                 final EditText groupPassConf = (EditText) promptView.findViewById(R.id.groupPassEnterConf);
 
@@ -144,12 +145,12 @@ public class MainActivity extends AppCompatActivity {
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        username = editText.getText().toString();
+                        username = groupName.getText().toString();
                         gPassword = groupPassEnter.getText().toString();
                         gPasswordConf = groupPassConf.getText().toString();
                         //Do stuff, possibly set wantToCloseDialog to true then...
-                        if (editText.getText().toString().equals(""))
-                            editText.setError("Please enter a group name.");
+                        if (groupName.getText().toString().equals(""))
+                            groupName.setError("Please enter a group name.");
                         else if (groupPassEnter.getText().toString().equals("") || groupPassConf.getText().toString().equals("")) {
                             groupPassEnter.setError("Please enter and confirm password.");
                         } else if (groupPassEnter.getText().toString().length() < 6 || groupPassEnter.getText().toString().length() > 32) {
@@ -158,7 +159,15 @@ public class MainActivity extends AppCompatActivity {
                             groupPassEnter.setError("Please enter same passwords to confirm.");
                         } else {
                             dialog.dismiss();
-                            Toast.makeText(getApplicationContext(), username + " has been created", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), username + " has been created", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getBaseContext(), WiFiDirectActivity.class);
+//                            Bundle credentials = new Bundle();
+//                            credentials.putString("GroupName", groupName);
+//                            credentials.putString("Password", groupPassConf);
+                            intent.putExtra("GroupName", groupName.toString());
+                            intent.putExtra("Password", groupPassConf.toString());
+//                            intent.putExtras(credentials);
+                            startActivity(intent);
                         }
                         //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
                     }
@@ -249,9 +258,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerSlide(View drawerView, float offset) {
                 actionButton.setAlpha(1 - offset);
-                cameraButton.setAlpha(1-offset);
-                groupButton.setAlpha(1-offset);
-                wifiButton.setAlpha(1-offset);
+                cameraButton.setAlpha(1 - offset);
+                groupButton.setAlpha(1 - offset);
+                wifiButton.setAlpha(1 - offset);
                 actionButton.setEnabled(false);
                 cameraButton.setEnabled(false);
                 groupButton.setEnabled(false);
