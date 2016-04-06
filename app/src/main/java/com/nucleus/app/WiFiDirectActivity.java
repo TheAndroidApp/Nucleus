@@ -1,4 +1,18 @@
-
+/*
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.nucleus.app;
 
@@ -7,7 +21,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
@@ -22,10 +35,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.nucleus.app.DeviceListFragment.DeviceActionListener;
 
-import java.lang.reflect.Method;
 
 /**
  * An activity that uses WiFi Direct APIs to discover and connect with available
@@ -36,6 +47,7 @@ import java.lang.reflect.Method;
  */
 public class WiFiDirectActivity extends Activity implements ChannelListener, DeviceActionListener {
 
+	
     public static final String TAG = "wifidirectdemo";
     private WifiP2pManager manager;
     private boolean isWifiP2pEnabled = false;
@@ -56,7 +68,11 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifidirect);
-
+        
+        /*AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+       mAdView.setAdSize(AdSize.SMART_BANNER);
+        mAdView.loadAd(adRequest);*/
         // add necessary intent values to be matched.
 
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
@@ -66,49 +82,10 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
 
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String groupName = extras.getString("GroupName");
-            String password = extras.getString("Password");
-        }
-
-//        if (wifiManager.isWifiEnabled()) {
-//            wifiManager.setWifiEnabled(false);
-//        }
-//
-//        WifiConfiguration netConfig = new WifiConfiguration();
-//
-//        netConfig.SSID = "MyAP";
-//        netConfig.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-//        netConfig.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
-//        netConfig.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-//        netConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-//
-//        try {
-//            Method setWifiApMethod = wifiManager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
-//            boolean apstatus = (Boolean) setWifiApMethod.invoke(wifiManager, netConfig, true);
-//
-//            Method isWifiApEnabledmethod = wifiManager.getClass().getMethod("isWifiApEnabled");
-//            while (!(Boolean) isWifiApEnabledmethod.invoke(wifiManager)) {
-//            }
-//            ;
-//            Method getWifiApStateMethod = wifiManager.getClass().getMethod("getWifiApState");
-//            int apstate = (Integer) getWifiApStateMethod.invoke(wifiManager);
-//            Method getWifiApConfigurationMethod = wifiManager.getClass().getMethod("getWifiApConfiguration");
-//            netConfig = (WifiConfiguration) getWifiApConfigurationMethod.invoke(wifiManager);
-//            Log.e("CLIENT", "\nSSID:" + netConfig.SSID + "\nPassword:" + netConfig.preSharedKey + "\n");
-//
-//        } catch (Exception e) {
-//            Log.e(this.getClass().toString(), "", e);
-//        }
-//
-
     }
 
-    /**
-     * register the BroadcastReceiver with the intent values to be matched
-     */
+   
+    /** register the BroadcastReceiver with the intent values to be matched */
     @Override
     public void onResume() {
         super.onResume();
@@ -230,6 +207,7 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
             @Override
             public void onFailure(int reasonCode) {
                 Log.d(TAG, "Disconnect failed. Reason :" + reasonCode);
+
             }
 
             @Override
