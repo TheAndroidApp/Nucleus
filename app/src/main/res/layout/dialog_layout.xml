@@ -18,19 +18,25 @@
         android:layout_alignParentBottom="true"
         android:weightSum="2">
 
-        <Button
-            android:id="@+id/btnSend"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/send" />
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel" />
+            android:background="@drawable/button_background"
+            android:text="@string/cancel"
+            android:textColor="#ffff" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_compress_background"
+            android:text="@string/send"
+            android:textColor="#ffff" />
+
 
     </LinearLayout>
 
