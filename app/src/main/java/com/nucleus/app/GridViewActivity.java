@@ -45,6 +45,7 @@ public class GridViewActivity extends Activity {
 
         // setting grid view adapter
         gridView.setAdapter(adapter);
+        gridView.invalidateViews();
     }
 
     private void InitilizeGridLayout() {

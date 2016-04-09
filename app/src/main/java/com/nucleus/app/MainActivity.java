@@ -1,7 +1,9 @@
 package com.nucleus.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -34,6 +36,12 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Change WiFi Name Variables
+    WifiP2pManager mWifiP2pManager;
+    WifiP2pManager.Channel mChannel;
+    String myNewDeviceName;
+    String TAG = "Nucleus";
+
     //Defining Variables
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -46,10 +54,68 @@ public class MainActivity extends AppCompatActivity {
     private Switch mySwitch;
     Switch switchButton, switchButton2;
     TextView textView, textView2;
-    String switchOn = "Switch is ON";
-    String switchOff = "Switch is OFF";
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
+
+
+    //Changes WiFi Direct Name
+    public void changeName(String input){
+
+        //inner class needs to have access to new name
+
+        myNewDeviceName = input;
+
+        //
+        //  This will get the WifiDirect manager for use
+        //
+
+
+        mWifiP2pManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
+        if (mWifiP2pManager != null) {
+            mChannel = mWifiP2pManager.initialize(this, getMainLooper(), null);
+            if (mChannel == null) {
+                //Failure to set up connection
+                Log.e(TAG, "Failed to set up connection with wifi p2p service");
+                mWifiP2pManager = null;
+            }
+        } else {
+            Log.e(TAG, "mWifiP2pManager is null !");
+        }
+
+        //
+        //  Setup for using the reflection API to actually call the methods we want
+        //
+
+        int numberOfParams = 3;
+        Class[] methodParameters = new Class[numberOfParams];
+        methodParameters[0] = WifiP2pManager.Channel.class;
+        methodParameters[1] = String.class;
+        methodParameters[2] = WifiP2pManager.ActionListener.class;
+
+        Object arglist[] = new Object[numberOfParams];
+        arglist[0] = mChannel;
+        arglist[1] = myNewDeviceName;
+        arglist[2] = new WifiP2pManager.ActionListener() {
+            public void onSuccess() {
+                String resultString = "WiFi Direct Service has started.";
+                Log.e(TAG, resultString);
+                Toast.makeText(getApplicationContext(), resultString, Toast.LENGTH_LONG).show();
+            }
+
+            public void onFailure(int reason) {
+                String resultString = "Failed to Change! Is your WiFi on?";
+                Log.e(TAG,resultString);
+                Toast.makeText(getApplicationContext(), resultString,Toast.LENGTH_LONG).show();
+            }
+        };
+
+        //
+        //  Now we use the reflection API to call a method we normally wouldn't have access to.
+        //
+
+        ReflectionUtils.executePrivateMethod(mWifiP2pManager,WifiP2pManager.class,"setDeviceName",methodParameters,arglist);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,12 +154,12 @@ public class MainActivity extends AppCompatActivity {
         SubActionButton.Builder itemBuilder3 = new SubActionButton.Builder(this);
         ImageView wifiIcon = new ImageView(this);
         wifiIcon.setImageDrawable(getDrawable(R.drawable.ic_wifi_tethering_black_18dp));
-        final SubActionButton wifiButton = itemBuilder3.setContentView(wifiIcon).build();
+        final SubActionButton nameButton = itemBuilder2.setContentView(wifiIcon).build();
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(cameraButton)
                 .addSubActionView(groupButton)
-                .addSubActionView(wifiButton)
+                .addSubActionView(nameButton)
                 .attachTo(actionButton)
                 .build();
 
@@ -109,32 +175,34 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //Directly get into the WiFi P2P Activity without asking for the dialog box.
         groupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Add Group option selected ", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getBaseContext(), WiFiDirectActivity.class);
+                startActivity(intent);
             }
         });
-        wifiButton.setOnClickListener(new View.OnClickListener() {
+
+        nameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
                 View promptView = layoutInflater.inflate(R.layout.input_dialog, null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                final EditText groupName = (EditText) promptView.findViewById(R.id.edittext);
-                final EditText groupPassEnter = (EditText) promptView.findViewById(R.id.groupPassEnter);
-                final EditText groupPassConf = (EditText) promptView.findViewById(R.id.groupPassEnterConf);
+                final EditText deviceName = (EditText) promptView.findViewById(R.id.edittext);
 
                 builder.setView(promptView);
-                builder.setTitle("CREATE GROUP");
-                builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
+                builder.setTitle("ENTER DEVICE NAME");
+                builder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -145,36 +213,17 @@ public class MainActivity extends AppCompatActivity {
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        username = groupName.getText().toString();
-                        gPassword = groupPassEnter.getText().toString();
-                        gPasswordConf = groupPassConf.getText().toString();
-                        //Do stuff, possibly set wantToCloseDialog to true then...
-                        if (groupName.getText().toString().equals(""))
-                            groupName.setError("Please enter a group name.");
-                        else if (groupPassEnter.getText().toString().equals("") || groupPassConf.getText().toString().equals("")) {
-                            groupPassEnter.setError("Please enter and confirm password.");
-                        } else if (groupPassEnter.getText().toString().length() < 6 || groupPassEnter.getText().toString().length() > 32) {
-                            groupPassEnter.setError("Password must contain 6-32 characters.");
-                        } else if (!gPassword.equalsIgnoreCase(gPasswordConf)) {
-                            groupPassEnter.setError("Please enter same passwords to confirm.");
-                        } else {
+                            changeName(deviceName.getText().toString());
                             dialog.dismiss();
-//                            Toast.makeText(getApplicationContext(), username + " has been created", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getBaseContext(), WiFiDirectActivity.class);
-//                            Bundle credentials = new Bundle();
-//                            credentials.putString("GroupName", groupName);
-//                            credentials.putString("Password", groupPassConf);
-                            intent.putExtra("GroupName", groupName.toString());
-                            intent.putExtra("Password", groupPassConf.toString());
-//                            intent.putExtras(credentials);
                             startActivity(intent);
                         }
                         //else dialog stays open. Make sure you have an obvious way to close the dialog especially if you set cancellable to false.
-                    }
-                });//Set to null. We override the onclick
-
-            }
+                    });
+                }//Set to null. We override the onclick
         });
+
+
 
         /* Navigation Drawer Functions Start Here. Please do not change! */
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -233,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 actionButton.setEnabled(true);
                 cameraButton.setEnabled(true);
                 groupButton.setEnabled(true);
-                wifiButton.setEnabled(true);
+                nameButton.setEnabled(true);
             }
 
             @Override
@@ -259,12 +308,12 @@ public class MainActivity extends AppCompatActivity {
             public void onDrawerSlide(View drawerView, float offset) {
                 actionButton.setAlpha(1 - offset);
                 cameraButton.setAlpha(1 - offset);
-                groupButton.setAlpha(1 - offset);
-                wifiButton.setAlpha(1 - offset);
+                groupButton.setAlpha(1-offset);
+                nameButton.setAlpha(1 - offset);
                 actionButton.setEnabled(false);
                 cameraButton.setEnabled(false);
                 groupButton.setEnabled(false);
-                wifiButton.setEnabled(false);
+                nameButton.setEnabled(false);
 
             }
         };

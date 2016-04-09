@@ -38,6 +38,8 @@ public class Camera extends AppCompatActivity {
 
         setContentView(R.layout.camera_layout);
         mImageView = (ImageView) findViewById(R.id.mImageView);
+        Button btnCameraCompress = (Button) findViewById(R.id.btnCameraCompress);
+        Button btnCameraCancel = (Button) findViewById(R.id.btnCameraCancel);
 
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -56,6 +58,28 @@ public class Camera extends AppCompatActivity {
                 startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
             }
         }
+
+        btnCameraCompress.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                Log.d("imgpath", _imagePaths.get(position));
+                Intent compressImage = new Intent(v.getContext(), BitmapActivity.class);
+                compressImage.putExtra("COMPRESS_IMAGE", "101");
+                compressImage.putExtra("IMAGE_PATH", mCurrentPhotoPath);
+                v.getContext().startActivity(compressImage);
+            }
+
+        });
+
+        btnCameraCancel.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                Log.d("imgpath", _imagePaths.get(position));
+                Intent backToMainActivity = new Intent(v.getContext(), MainActivity.class);
+                v.getContext().startActivity(backToMainActivity);
+            }
+
+        });
 
     }
 

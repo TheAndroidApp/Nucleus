@@ -205,7 +205,9 @@ public class BitmapActivity extends Activity implements OnClickListener {
 
                         @Override
                         public void onClick(View v) {
-                            dialog.dismiss();
+                            //dialog.dismiss();
+                            Intent backToMainActivity = new Intent(getBaseContext(), MainActivity.class);
+                            v.getContext().startActivity(backToMainActivity);
 
                         }
                     });
@@ -214,7 +216,8 @@ public class BitmapActivity extends Activity implements OnClickListener {
 
                         @Override
                         public void onClick(View v) {
-                            Log.d("imgcomp", "This is send");
+                            Intent intent = new Intent(getBaseContext(), WiFiDirectActivity.class);
+                            startActivity(intent);
                         }
                     });
                 }

@@ -50,8 +50,11 @@ public class tab2 extends Fragment {
         adapter = new GridViewImageAdapter(getActivity(), imagePaths,
                 columnWidth);
 
+        adapter.notifyDataSetChanged();
+
         // setting grid view adapter
         gridView.setAdapter(adapter);
+        gridView.invalidateViews();
         //return inflater.inflate(R.layout.activity_grid_view,null);
         return view;
     }
