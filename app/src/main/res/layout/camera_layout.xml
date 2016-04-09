@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,7 +9,34 @@
         android:id="@+id/mImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/PrimaryColor" />
+        android:background="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnCameraCompress"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/button_compress_background"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="Compress"
+        android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/btnCameraCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="240dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/button_background"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="Cancel"
+        android:textColor="#ffffff" />
 
 
-</LinearLayout>
+</RelativeLayout>

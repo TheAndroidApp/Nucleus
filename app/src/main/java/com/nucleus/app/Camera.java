@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import helper.AppConstant;
+
 /**
  * Created by Anand.M.P on 1/30/2016.
  */
@@ -61,8 +63,11 @@ public class Camera extends AppCompatActivity {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
+//        File storageDir = Environment.getExternalStoragePublicDirectory(
+//                Environment.DIRECTORY_PICTURES);
+        File storageDir = new File(
+                android.os.Environment.getExternalStorageDirectory()
+                        + File.separator + "DCIM/Camera");
         File image = File.createTempFile(
                 imageFileName,  // prefix
                 ".jpg",         // suffix
