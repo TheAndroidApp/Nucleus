@@ -10,6 +10,7 @@ import java.util.Locale;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Point;
+import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class Utils {
                     // check for supported file extension
                     if (IsSupportedFile(filePath)) {
                         // Add image path to array list
+
                         filePaths.add(filePath);
                     }
                 }

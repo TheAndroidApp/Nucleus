@@ -81,7 +81,7 @@ public class FullScreenImageAdapter extends PagerAdapter {
         btnCompress.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                Log.d("imgpath", _imagePaths.get(position));
+                Log.d("imgpath", _imagePaths.get(position));
                 Intent compressImage = new Intent(v.getContext(), BitmapActivity.class);
                 compressImage.putExtra("COMPRESS_IMAGE", "101");
                 compressImage.putExtra("IMAGE_PATH", _imagePaths.get(position));

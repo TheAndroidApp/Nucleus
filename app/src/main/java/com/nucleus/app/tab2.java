@@ -13,13 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import adapter.GridViewImageAdapter;
 import helper.AppConstant;
 import helper.Utils;
-
 public class tab2 extends Fragment {
 
     private Utils utils;
@@ -36,8 +36,7 @@ public class tab2 extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
 
-        AppConstant.PHOTO_ALBUM = "Nucleus/Compressed Images";
-
+        AppConstant.PHOTO_ALBUM="Nucleus/Compressed Images";
         utils = new Utils(getActivity());
 
         // Initilizing Grid View
@@ -73,6 +72,15 @@ public class tab2 extends Fragment {
                 (int) padding);
         gridView.setHorizontalSpacing((int) padding);
         gridView.setVerticalSpacing((int) padding);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Toast.makeText(getActivity(), "TAB 2 SELECTED ", Toast.LENGTH_LONG).show();
+        }else{
+
+        }
     }
 
 }
