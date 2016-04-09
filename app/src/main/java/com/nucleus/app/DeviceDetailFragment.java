@@ -73,7 +73,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
     public static String GroupOwnerAddress = "";
     static long ActualFilelength = 0;
     static int Percentage = 0;
-    public static String FolderName = "WiFiDirectDemo";
+    public static String FolderName = "Nucleus/Received Images";
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -273,14 +273,14 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
                     getActivity().startService(serviceIntent);
                 } else {
                     CommonMethods.DisplayToast(getActivity(),
-                            "Host Address not found, Please Re-Connect 1 Host "+host+" "+sub_port);
+                            "Host Address not found, Please Re-Connect 1 Host " + host + " " + sub_port);
                     DismissProgressDialog();
                 }
 
             } else {
                 DismissProgressDialog();
                 CommonMethods.DisplayToast(getActivity(),
-                        "Host Address not found, Please Re-Connect 2 Host "+ OwnerIp);
+                        "Host Address not found, Please Re-Connect 2 Host " + OwnerIp);
             }
         } else {
             CommonMethods.DisplayToast(getActivity(), "Cancelled Request");
@@ -322,7 +322,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
                         "GroupOwnerAddress", GroupOwner);
             mContentView.findViewById(R.id.btn_start_client).setVisibility(View.VISIBLE);
             if (info.groupFormed && info.isGroupOwner) {
-        	/*
+            /*
         	 * set shaerdprefrence which remember that device is server.
         	 */
                 SharedPreferencesHandler.setStringValues(getActivity(),

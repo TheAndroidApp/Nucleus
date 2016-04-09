@@ -22,5 +22,19 @@
         android:paddingTop="2dp"
         android:text="Close"
         android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/btnCompress"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="110dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_compress_background"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="Compress"
+        android:textColor="#ffffff" />
+
 
 </RelativeLayout>

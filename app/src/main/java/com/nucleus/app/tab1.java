@@ -35,6 +35,8 @@ public class tab1 extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
 
+        AppConstant.PHOTO_ALBUM = "DCIM/Camera";
+
         utils = new Utils(getActivity());
 
         // Initilizing Grid View

@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.nucleus.app.BitmapActivity;
 import com.nucleus.app.R;
 
 public class FullScreenImageAdapter extends PagerAdapter {
@@ -47,9 +50,10 @@ public class FullScreenImageAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         ImageView imgDisplay;
         Button btnClose;
+        Button btnCompress;
 
         inflater = (LayoutInflater) _activity
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,6 +62,8 @@ public class FullScreenImageAdapter extends PagerAdapter {
 
         imgDisplay = (ImageView) viewLayout.findViewById(R.id.imgDisplay);
         btnClose = (Button) viewLayout.findViewById(R.id.btnClose);
+        btnCompress = (Button) viewLayout.findViewById(R.id.btnCompress);
+
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -70,6 +76,18 @@ public class FullScreenImageAdapter extends PagerAdapter {
             public void onClick(View v) {
                 _activity.finish();
             }
+        });
+
+        btnCompress.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                Log.d("imgpath", _imagePaths.get(position));
+                Intent compressImage = new Intent(v.getContext(), BitmapActivity.class);
+                compressImage.putExtra("COMPRESS_IMAGE", "101");
+                compressImage.putExtra("IMAGE_PATH", _imagePaths.get(position));
+                v.getContext().startActivity(compressImage);
+            }
+
         });
 
         ((ViewPager) container).addView(viewLayout);

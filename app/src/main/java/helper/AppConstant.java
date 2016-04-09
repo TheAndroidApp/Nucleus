@@ -15,7 +15,11 @@ public class AppConstant {
     public static final int GRID_PADDING = 8; // in dp
 
     // SD card image directory
-    public static final String PHOTO_ALBUM = "Pictures";
+//    public static final String PHOTO_ALBUM = "";
+    public static String PHOTO_ALBUM = "";
+//    public static final String PHOTO_ALBUM2 = "Nucleus/Compressed Images";
+//    public static final String PHOTO_ALBUM3 = "Nucleus/Received Images";
+
 
     // supported file formats
     public static final List<String> FILE_EXTN = Arrays.asList("jpg", "jpeg",

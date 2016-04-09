@@ -13,10 +13,11 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.support.design.widget.TabLayout;
 
 public class Utils {
-
     private Context _context;
+    //private int tabPosition = getSelectedTabPosition();
 
     // constructor
     public Utils(Context context) {

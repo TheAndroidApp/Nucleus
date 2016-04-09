@@ -32,4 +32,12 @@
     <string name="group_owner_text">"Am I the Group Owner? "</string>
     <string name="label_me">ME</string>
     <string name="label_peers">PEERS</string>
+
+    <!-- Compression String Values-->
+    <string name="action_settings">Settings</string>
+    <string name="click_image">Click Image</string>
+    <string name="from_gallery">From Gallery</string>
+    <string name="image_content">Image</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
 </resources>
