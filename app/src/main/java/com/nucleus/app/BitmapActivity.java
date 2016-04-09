@@ -61,9 +61,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
     private ListView listView;
     private ImageView imgView;
 
-
-
-//    private ImageUriDatabase database;
     private ImageListAdapter adapter;
     private ImageLoadingUtils utils;
 
@@ -85,7 +82,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
 
         verifyStoragePermissions(this);
 
-        //database = new ImageUriDatabase(this);
         utils = new ImageLoadingUtils(this);
         int cachesize = 60 * 1024 * 1024;
 
@@ -102,10 +98,9 @@ public class BitmapActivity extends Activity implements OnClickListener {
         };
         initViews();
 
-//        cursor = database.getallUri();
         adapter = new ImageListAdapter(this, cursor, true);
         listView.setAdapter(adapter);
-        if( compressCheck.equals("101")){
+        if (compressCheck.equals("101")) {
                 /*
                  * get actual file name and size of file, it will be send to socket and recieved at other device.
     	         * File size help in displaying progress dialog actual progress.
@@ -132,7 +127,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
                     e.printStackTrace();
                 }
             } else {
-//                CommonMethods.e("", "path is null");
                 Log.d("imgcomp", "Intent path failure");
                 return;
             }
@@ -141,6 +135,7 @@ public class BitmapActivity extends Activity implements OnClickListener {
             Log.d("imgcomp", "AsyncTask in onCreate started");
         }
     }
+
     private void initViews() {
         btnClickImage = (Button) findViewById(R.id.btnClickImage);
         btnFromGallery = (Button) findViewById(R.id.btnFromGallery);
@@ -220,11 +215,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
                         @Override
                         public void onClick(View v) {
                             Log.d("imgcomp", "This is send");
-                           // Toast.makeText(this, "This is send", Toast.LENGTH_SHORT).show();
-                           // database.insertUri(filePath);
-                            //cursor = database.getallUri();
-                            //adapter.changeCursor(cursor);
-                            //dialog.dismiss();
                         }
                     });
                 }
@@ -241,17 +231,7 @@ public class BitmapActivity extends Activity implements OnClickListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
-//		if(resultCode == RESULT_OK){
-//			switch(requestCode){
-//			case REQUEST_CODE_FROM_GALLERY:
-//				new ImageCompressionAsyncTask(true).execute(data.getDataString());
-//
-//				break;
-//			case REQUEST_CODE_CLICK_IMAGE:
-//				new ImageCompressionAsyncTask(false).execute(data.getDataString());
-//				break;
-//			}
-//		}
+
         if (resultCode == RESULT_OK) {
             Uri uri = data.getData();
                 /*
@@ -280,16 +260,13 @@ public class BitmapActivity extends Activity implements OnClickListener {
                     e.printStackTrace();
                 }
             } else {
-//                CommonMethods.e("", "path is null");
                 Log.d("imgcomp", "path is null");
                 return;
             }
             Log.d("imgcomp", "Selected File Path: " + selectedfilePath);
             new ImageCompressionAsyncTask(true).execute(selectedfilePath);
             Log.d("imgcomp", "AsyncTask started");
-//
-        }
-        else{
+        } else {
             Log.d("imgcomp", "RESULT CODE FAILURE");
         }
     }
@@ -415,13 +392,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
                 cursor.moveToFirst();
                 int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
                 return cursor.getString(idx);
-//				return cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.ImageColumns.DATA));
-//                Log.d("imageuri", MediaStore.Images.ImageColumns.DATA);
-//                int column_index = cursor.getColumnIndexOrThrow(v);
-//                cursor.moveToFirst();
-//                return cursor.getString(column_index);
-
-
             }
         }
 
@@ -445,9 +415,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
                 showDialog(1, bundle);
             } else {
                 Log.d("imgcomp", "onPostExecute Else");
-//                database.insertUri(result);
-//                cursor = database.getallUri();
-//                adapter.changeCursor(cursor);
             }
         }
 
@@ -464,7 +431,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
         @Override
         public void bindView(View view, Context context, Cursor cursor) {
             ViewHolder holder = (ViewHolder) view.getTag();
-//            loadBitmap(cursor.getString(cursor.getColumnIndex(ImageUriDatabase.PATH_NAME)), holder.imageView, context);
             loadBitmap(cursor.getString(cursor.getColumnIndex(selectedfilePath)), holder.imageView, context);
 
 
@@ -572,14 +538,13 @@ public class BitmapActivity extends Activity implements OnClickListener {
     }
 
 
-
     public static String getPath(Uri uri, Context context) {
         if (uri == null) {
 //            CommonMethods.e("", "uri is null");
             return null;
         }
         // this will only work for images selected from gallery
-        String[] projection = { MediaStore.Images.Media.DATA };
+        String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = context.getContentResolver().query(uri, projection, null, null, null);
 //        CommonMethods.e("", "get path method->> after cursor init");
         if (cursor != null) {
@@ -592,6 +557,7 @@ public class BitmapActivity extends Activity implements OnClickListener {
 //        CommonMethods.e("", "get path method->> " + uri.getPath());
         return uri.getPath();
     }
+
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);

@@ -6,11 +6,11 @@
     android:padding="20dp">
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/group_name"-->
-        <!--android:id="@+id/textView"-->
-        <!--android:textSize="14sp" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/group_name"-->
+    <!--android:id="@+id/textView"-->
+    <!--android:textSize="14sp" />-->
 
     <EditText
         android:id="@+id/edittext"
@@ -20,32 +20,32 @@
         android:textSize="14sp" />
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/password"-->
-        <!--android:id="@+id/groupPass"-->
-        <!--android:textSize="14sp" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/password"-->
+    <!--android:id="@+id/groupPass"-->
+    <!--android:textSize="14sp" />-->
 
     <EditText
         android:id="@+id/groupPassEnter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textPassword"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textSize="14sp" />
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/confirm_pass"-->
-        <!--android:id="@+id/groupPassConf"-->
-        <!--android:textSize="14sp" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/confirm_pass"-->
+    <!--android:id="@+id/groupPassConf"-->
+    <!--android:textSize="14sp" />-->
 
     <EditText
         android:id="@+id/groupPassEnterConf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textPassword"
         android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:textSize="14sp" />
 </LinearLayout>

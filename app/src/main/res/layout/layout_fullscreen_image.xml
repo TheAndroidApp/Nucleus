@@ -22,6 +22,7 @@
         android:paddingTop="2dp"
         android:text="Close"
         android:textColor="#ffffff" />
+
     <Button
         android:id="@+id/btnCompress"
         android:layout_width="wrap_content"

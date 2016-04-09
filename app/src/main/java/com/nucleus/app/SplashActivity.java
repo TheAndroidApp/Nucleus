@@ -26,9 +26,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        image = (ImageView)findViewById(R.id.image);
+        image = (ImageView) findViewById(R.id.image);
         Resources res = this.getResources();
-        trans = (TransitionDrawable)res.getDrawable(R.drawable.transition);
+        trans = (TransitionDrawable) res.getDrawable(R.drawable.transition);
         image.setImageDrawable(trans);
         trans.reverseTransition(3000);
 

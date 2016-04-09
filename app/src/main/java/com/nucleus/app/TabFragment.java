@@ -3,6 +3,7 @@ package com.nucleus.app;
 /**
  * Created by Ronn on 29-Jan-16.
  */
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,10 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TabFragment extends Fragment{
+public class TabFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3 ;
+    public static int int_items = 3;
 
     @Nullable
     @Override
@@ -25,7 +26,7 @@ public class TabFragment extends Fragment{
         /**
          *Inflate tab_layout and setup Views.
          */
-        View x =  inflater.inflate(R.layout.tab_layout,null);
+        View x = inflater.inflate(R.layout.tab_layout, null);
         tabLayout = (TabLayout) x.findViewById(R.id.tabs);
         viewPager = (ViewPager) x.findViewById(R.id.viewpager);
 
@@ -51,7 +52,7 @@ public class TabFragment extends Fragment{
 
     }
 
-    class MyAdapter extends FragmentPagerAdapter{
+    class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
             super(fm);
@@ -62,12 +63,14 @@ public class TabFragment extends Fragment{
          */
 
         @Override
-        public Fragment getItem(int position)
-        {
-            switch (position){
-                case 0 : return new tab1();
-                case 1 : return new tab2();
-                case 2 : return new tab3();
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new tab1();
+                case 1:
+                    return new tab2();
+                case 2:
+                    return new tab3();
             }
             return null;
         }
@@ -86,12 +89,12 @@ public class TabFragment extends Fragment{
         @Override
         public CharSequence getPageTitle(int position) {
 
-            switch (position){
-                case 0 :
+            switch (position) {
+                case 0:
                     return "Gallery";
-                case 1 :
+                case 1:
                     return "Send Files";
-                case 2 :
+                case 2:
                     return "Received Files";
             }
             return null;

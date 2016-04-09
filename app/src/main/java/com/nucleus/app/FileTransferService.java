@@ -25,19 +25,20 @@ import android.widget.Toast;
  */
 public class FileTransferService extends IntentService {
 
-	Handler mHandler;
-	
+    Handler mHandler;
+
     public static final int SOCKET_TIMEOUT = 5000;
     public static final String ACTION_SEND_FILE = "com.example.android.wifidirect.SEND_FILE";
     public static final String EXTRAS_FILE_PATH = "file_url";
     public static final String EXTRAS_GROUP_OWNER_ADDRESS = "go_host";
     public static final String EXTRAS_GROUP_OWNER_PORT = "go_port";
 
-    public static  int PORT = 8888 ;
+    public static int PORT = 8888;
     public static final String inetaddress = "inetaddress";
     public static final int ByteSize = 512;
     public static final String Extension = "extension";
     public static final String Filelength = "filelength";
+
     public FileTransferService(String name) {
         super(name);
     }
@@ -48,10 +49,11 @@ public class FileTransferService extends IntentService {
 
     @Override
     public void onCreate() {
-    	// TODO Auto-generated method stub
-    	super.onCreate();
-    	mHandler = new Handler();
+        // TODO Auto-generated method stub
+        super.onCreate();
+        mHandler = new Handler();
     }
+
     /*
      * (non-Javadoc)
      * @see android.app.IntentService#onHandleIntent(android.content.Intent)
@@ -70,10 +72,9 @@ public class FileTransferService extends IntentService {
 
             try {
                 Log.d(WiFiDirectActivity.TAG, "Opening client socket - ");
-                try{
+                try {
                     socket.setReuseAddress(true);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 socket.bind(null);
@@ -88,15 +89,15 @@ public class FileTransferService extends IntentService {
                 /*
                  * Object that is used to send file name with extension and recieved on other side.
                  */
-                 Long FileLength = Long.parseLong(filelength);
-                 WiFiTransferModal transObj = null;
-                 ObjectOutputStream oos = new ObjectOutputStream(stream);
-                 if(transObj == null) transObj = new WiFiTransferModal();
-                 
-                 
-                 transObj = new WiFiTransferModal(extension,FileLength);
-                 oos.writeObject(transObj);
-                 
+                Long FileLength = Long.parseLong(filelength);
+                WiFiTransferModal transObj = null;
+                ObjectOutputStream oos = new ObjectOutputStream(stream);
+                if (transObj == null) transObj = new WiFiTransferModal();
+
+
+                transObj = new WiFiTransferModal(extension, FileLength);
+                oos.writeObject(transObj);
+
                 try {
                     is = cr.openInputStream(Uri.parse(fileUri));
                 } catch (FileNotFoundException e) {
@@ -104,19 +105,19 @@ public class FileTransferService extends IntentService {
                 }
                 DeviceDetailFragment.copyFile(is, stream);
                 Log.d(WiFiDirectActivity.TAG, "Client: Data written");
-                oos.close();	//close the ObjectOutputStream after sending data.
+                oos.close();    //close the ObjectOutputStream after sending data.
             } catch (IOException e) {
                 Log.e(WiFiDirectActivity.TAG, e.getMessage());
                 e.printStackTrace();
                 CommonMethods.e("Unable to connect host", "service socket error in wififiletransferservice class");
-           	 mHandler.post(new Runnable() {
-					
-					public void run() {
-						// TODO Auto-generated method stub
-						Toast.makeText(FileTransferService.this, "Paired Device is not Ready to receive the file", Toast.LENGTH_LONG).show();
-					}
-           	 });
-           	 DeviceDetailFragment.DismissProgressDialog();
+                mHandler.post(new Runnable() {
+
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(FileTransferService.this, "Paired Device is not Ready to receive the file", Toast.LENGTH_LONG).show();
+                    }
+                });
+                DeviceDetailFragment.DismissProgressDialog();
             } finally {
                 if (socket != null) {
                     if (socket.isConnected()) {

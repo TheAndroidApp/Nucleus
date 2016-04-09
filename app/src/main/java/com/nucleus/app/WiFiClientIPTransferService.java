@@ -14,19 +14,20 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
-public class WiFiClientIPTransferService extends IntentService{
+public class WiFiClientIPTransferService extends IntentService {
 
-public WiFiClientIPTransferService(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
-public WiFiClientIPTransferService() {
-    super("WiFiClientIPTransferService");
-}
+    public WiFiClientIPTransferService(String name) {
+        super(name);
+        // TODO Auto-generated constructor stub
+    }
+
+    public WiFiClientIPTransferService() {
+        super("WiFiClientIPTransferService");
+    }
 
 
-Handler mHandler;
-	
+    Handler mHandler;
+
 
     /*
      * (non-Javadoc)
@@ -37,19 +38,18 @@ Handler mHandler;
         Context context = GlobalApplication.getGlobalAppContext();
         if (intent.getAction().equals(FileTransferService.ACTION_SEND_FILE)) {
             String host = intent.getExtras().getString(FileTransferService.EXTRAS_GROUP_OWNER_ADDRESS);
-            String InetAddress =  intent.getExtras().getString(FileTransferService.inetaddress);
-            CommonMethods.e("LocalIp Received while first connect","host address"+ host);
+            String InetAddress = intent.getExtras().getString(FileTransferService.inetaddress);
+            CommonMethods.e("LocalIp Received while first connect", "host address" + host);
 
             Socket socket = new Socket();
             int port = intent.getExtras().getInt(FileTransferService.EXTRAS_GROUP_OWNER_PORT);
 
             try {
-            	
+
                 Log.d(WiFiDirectActivity.TAG, "Opening client socket for First tiime- ");
-                try{
+                try {
                     socket.setReuseAddress(true);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 socket.bind(null);
@@ -64,11 +64,11 @@ Handler mHandler;
                 */
                 ObjectOutputStream oos = new ObjectOutputStream(stream);
                 WiFiTransferModal transObj = new WiFiTransferModal(InetAddress);
-                
+
                 oos.writeObject(transObj);
                 System.out.println("Sending request to Socket Server");
-                
-                oos.close();	//close the ObjectOutputStream after sending data.
+
+                oos.close();    //close the ObjectOutputStream after sending data.
             } catch (IOException e) {
                 Log.e(WiFiDirectActivity.TAG, e.getMessage());
                 e.printStackTrace();
@@ -76,7 +76,7 @@ Handler mHandler;
                 if (socket != null) {
                     if (socket.isConnected()) {
                         try {
-                        	CommonMethods.e("WiFiClientIP Service", "First Connection service socket closed");
+                            CommonMethods.e("WiFiClientIP Service", "First Connection service socket closed");
                             socket.close();
                         } catch (Exception e) {
                             // Give up

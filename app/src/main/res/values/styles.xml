@@ -11,6 +11,7 @@
         <item name="android:statusBarColor">@color/PrimaryColor</item>
         <item name="android:background">@color/DarkTextColor</item>
     </style>
+
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <!-- Dark theme base colours -->
         <item name="colorPrimary">@color/PrimaryDarkColor</item>
@@ -23,6 +24,7 @@
         <item name="android:statusBarColor">@color/PrimaryDarkColor</item>
         <item name="android:colorBackground">@color/Black</item>
     </style>
+
     <style name="tabTextStyle">
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>

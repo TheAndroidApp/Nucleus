@@ -4,11 +4,10 @@
     android:layout_height="match_parent">
     <!--android:background="@color/PrimaryDarkColor">-->
     <ImageView
-    android:id="@+id/image"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/color_selector1"
-        />
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/color_selector1" />
     <!--Add a suitable background image and logo here-->
     <!-- -->
     <!--<ImageView-->

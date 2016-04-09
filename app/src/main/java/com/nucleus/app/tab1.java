@@ -3,6 +3,7 @@ package com.nucleus.app;
 /**
  * Created by Ronn on 29-Jan-16.
  */
+
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

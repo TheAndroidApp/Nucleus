@@ -3,7 +3,6 @@
     android:id="@+id/grid_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:numColumns="auto_fit"
     android:gravity="center"
-    android:stretchMode="columnWidth">
-</GridView>
+    android:numColumns="auto_fit"
+    android:stretchMode="columnWidth"></GridView>
