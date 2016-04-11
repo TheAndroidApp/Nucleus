@@ -16,6 +16,18 @@
             android:id="@+id/toolbar"
             layout="@layout/tool_bar" />
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Test"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:id="@+id/textView2"
+            android:textColor="#000" />
+
+        <include layout="@layout/activity_grid_view"></include>
+
         <FrameLayout
             android:id="@+id/containerView"
             android:layout_width="match_parent"
@@ -25,12 +37,6 @@
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
     <android.support.design.widget.NavigationView

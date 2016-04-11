@@ -16,7 +16,7 @@ public class AppConstant {
 
     // SD card image directory
 //    public static final String PHOTO_ALBUM = "";
-    public static String PHOTO_ALBUM = "";
+    public static String PHOTO_ALBUM = "DCIM/Camera";
     public static String PHOTO_ALBUM2="";
     public static String PHOTO_ALBUM3="";
 //    public static final String PHOTO_ALBUM2 = "Nucleus/Compressed Images";

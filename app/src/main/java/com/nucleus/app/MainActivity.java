@@ -4,6 +4,7 @@ package com.nucleus.app;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Parcelable;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.Checkable;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -35,7 +38,11 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
+import java.util.ArrayList;
+
+import adapter.GridViewImageAdapter;
 import helper.AppConstant;
+import helper.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
     private String gPassword;
     private String gPasswordConf;
     private Switch mySwitch;
+    private Utils utils;
+    private ArrayList<String> imagePaths = new ArrayList<String>();
+    private GridViewImageAdapter adapter;
+    private GridView gridView;
+    private int columnWidth;
     Switch switchButton, switchButton2;
     TextView textView, textView2;
     private static final String PREFS_NAME = "prefs";
@@ -137,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
 
-        resultText = (TextView) findViewById(R.id.result);
 
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -232,10 +243,30 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        /* Tab Fragments Initialized Here */
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
+        /* GridView Initialized Here */
+
+        //View view = inflater.inflate(R.layout.activity_grid_view, container, false);
+
+        gridView = (GridView) findViewById(R.id.grid_view);
+        utils = new Utils(this);
+
+        // Initilizing Grid View
+        InitilizeGridLayout();
+
+        // loading all image paths from SD card
+        imagePaths = utils.getFilePaths();
+
+        // Gridview adapter
+        adapter = new GridViewImageAdapter(this, imagePaths,
+                columnWidth);
+
+        adapter.notifyDataSetChanged();
+
+
+        // setting grid view adapter
+        gridView.setAdapter(adapter);
+        gridView.invalidateViews();
+        //return inflater.inflate(R.layout.activity_grid_view,null);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -343,6 +374,21 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+    private void InitilizeGridLayout() {
+        Resources r = getResources();
+        float padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                AppConstant.GRID_PADDING, r.getDisplayMetrics());
+
+        columnWidth = (int) ((utils.getScreenWidth() - ((AppConstant.NUM_OF_COLUMNS + 1) * padding)) / AppConstant.NUM_OF_COLUMNS);
+
+        gridView.setNumColumns(AppConstant.NUM_OF_COLUMNS);
+        gridView.setColumnWidth(columnWidth);
+        gridView.setStretchMode(GridView.NO_STRETCH);
+        gridView.setPadding((int) padding, (int) padding, (int) padding,
+                (int) padding);
+        gridView.setHorizontalSpacing((int) padding);
+        gridView.setVerticalSpacing((int) padding);
     }
 
 

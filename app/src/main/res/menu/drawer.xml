@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="Nucleus Settings">
+    <item android:title="Folders">
         <menu>
             <group
-                android:id="@+id/group_settings"
+                android:id="@+id/folders"
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/navGallery"
@@ -22,6 +22,14 @@
                     android:checked="false"
                     android:icon="@drawable/ic_get_app_black_24dp"
                     android:title="@string/rcvdImg" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Nucleus Settings">
+        <menu>
+            <group
+                android:id="@+id/group_settings"
+                android:checkableBehavior="single">
                 <item
                     android:id="@+id/theme"
                     android:icon="@drawable/ic_invert_colors_black_24dp"
