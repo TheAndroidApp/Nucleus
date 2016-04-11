@@ -34,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.nucleus.app.DeviceListFragment.DeviceActionListener;
@@ -56,6 +57,7 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
 
     private final IntentFilter intentFilter = new IntentFilter();
     private Channel channel;
+    private Button btnDiscover;
     private BroadcastReceiver receiver = null;
 
     /**
@@ -69,7 +71,34 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifidirect);
-        
+        btnDiscover = (Button) findViewById(R.id.btnDiscover);
+        btnDiscover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isWifiP2pEnabled) {
+                    Toast.makeText(WiFiDirectActivity.this, R.string.p2p_off_warning,
+                            Toast.LENGTH_SHORT).show();
+                }
+                final DeviceListFragment fragment = (DeviceListFragment) getFragmentManager()
+                        .findFragmentById(R.id.frag_list);
+                fragment.onInitiateDiscovery();
+                manager.discoverPeers(channel, new WifiP2pManager.ActionListener() {
+
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(WiFiDirectActivity.this, "Discovery Initiated",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(int reasonCode) {
+                        Toast.makeText(WiFiDirectActivity.this, "Discovery Failed : " + reasonCode,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+        });
         /*AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
        mAdView.setAdSize(AdSize.SMART_BANNER);
@@ -119,61 +148,13 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_items, menu);
-        return true;
-    }
+
 
     /*
      * (non-Javadoc)
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.atn_direct_enable:
-                if (manager != null && channel != null) {
 
-                    // Since this is the system wireless settings activity, it's
-                    // not going to send us a result. We will be notified by
-                    // WiFiDeviceBroadcastReceiver instead.
-
-                    startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-                } else {
-                    Log.e(TAG, "channel or manager is null");
-                }
-                return true;
-
-            case R.id.atn_direct_discover:
-                if (!isWifiP2pEnabled) {
-                    Toast.makeText(WiFiDirectActivity.this, R.string.p2p_off_warning,
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                final DeviceListFragment fragment = (DeviceListFragment) getFragmentManager()
-                        .findFragmentById(R.id.frag_list);
-                fragment.onInitiateDiscovery();
-                manager.discoverPeers(channel, new WifiP2pManager.ActionListener() {
-
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(WiFiDirectActivity.this, "Discovery Initiated",
-                                Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(int reasonCode) {
-                        Toast.makeText(WiFiDirectActivity.this, "Discovery Failed : " + reasonCode,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     @Override
     public void showDetails(WifiP2pDevice device) {

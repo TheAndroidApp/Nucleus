@@ -29,7 +29,7 @@ public class tab1 extends Fragment {
     private GridViewImageAdapter adapter;
     private GridView gridView;
     private int columnWidth;
-    private boolean isViewShown=false;
+    private boolean isFragmentLoaded=false;
 
     @Nullable
     @Override
@@ -39,7 +39,6 @@ public class tab1 extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
 
-        AppConstant.PHOTO_ALBUM = "DCIM/Camera";
         utils = new Utils(getActivity());
 
         // Initilizing Grid View
@@ -85,6 +84,7 @@ public class tab1 extends Fragment {
             Toast.makeText(getActivity(), "TAB 1 SELECTED ", Toast.LENGTH_LONG).show();
 
         }else{
+
         }
     }
 

@@ -2,16 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group
-        android:id="@+id/group_stats"
-        android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/stats"
-            android:checked="false"
-            android:icon="@drawable/ic_assessment_black_24dp"
-            android:title="@string/stats" />
-    </group>
     <item android:title="Nucleus Settings">
         <menu>
             <group

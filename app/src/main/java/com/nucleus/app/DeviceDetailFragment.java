@@ -196,8 +196,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
             }
 
 
-            TextView statusText = (TextView) mContentView.findViewById(R.id.status_text);
-            statusText.setText("Sending: " + uri);
             Log.d(WiFiDirectActivity.TAG, "Intent----------- " + uri);
             Intent serviceIntent = new Intent(getActivity(), FileTransferService.class);
             serviceIntent.setAction(FileTransferService.ACTION_SEND_FILE);
@@ -406,8 +404,6 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
         view = (TextView) mContentView.findViewById(R.id.device_info);
         view.setText(R.string.empty);
         view = (TextView) mContentView.findViewById(R.id.group_owner);
-        view.setText(R.string.empty);
-        view = (TextView) mContentView.findViewById(R.id.status_text);
         view.setText(R.string.empty);
         mContentView.findViewById(R.id.btn_start_client).setVisibility(View.GONE);
         this.getView().setVisibility(View.GONE);

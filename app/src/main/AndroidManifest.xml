@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nucleus.app">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -18,7 +19,8 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace = "android:theme">
 
         <activity
             android:name=".SplashActivity"
@@ -49,7 +51,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".DirChooserFragment" />
         <activity
             android:name=".GridViewActivity"
             android:label="@string/app_name">

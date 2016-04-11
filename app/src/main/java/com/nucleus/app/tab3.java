@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class tab3 extends Fragment {
     private GridViewImageAdapter adapter;
     private GridView gridView;
     private int columnWidth;
+    private boolean isFragmentLoaded=false;
 
     @Nullable
     @Override
@@ -36,8 +38,7 @@ public class tab3 extends Fragment {
         View view = inflater.inflate(R.layout.activity_grid_view, container, false);
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
-
-        AppConstant.PHOTO_ALBUM = "Nucleus/Received Images";
+//
 
         utils = new Utils(getActivity());
 
@@ -80,7 +81,10 @@ public class tab3 extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             Toast.makeText(getActivity(), "TAB 3 SELECTED ", Toast.LENGTH_LONG).show();
+            AppConstant.PHOTO_ALBUM="Nucleus/Received Images";
+
         }else{
+
         }
     }
 

@@ -137,12 +137,8 @@ public class BitmapActivity extends Activity implements OnClickListener {
     }
 
     private void initViews() {
-        btnClickImage = (Button) findViewById(R.id.btnClickImage);
-        btnFromGallery = (Button) findViewById(R.id.btnFromGallery);
         listView = (ListView) findViewById(R.id.listView);
 
-        btnClickImage.setOnClickListener(this);
-        btnFromGallery.setOnClickListener(this);
 
     }
 
@@ -165,19 +161,6 @@ public class BitmapActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnClickImage: {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, REQUEST_CODE_CLICK_IMAGE);
-            }
-            break;
-            case R.id.btnFromGallery: {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, CHOOSE_FILE_RESULT_CODE);
-            }
-            break;
-        }
 
     }
 

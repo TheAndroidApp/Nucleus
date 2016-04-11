@@ -3,13 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="3dp">
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="10dp">
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="31dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="@string/label_me" />
+        android:text="@string/label_me"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal" />
 
     <View
         android:layout_width="fill_parent"
@@ -46,7 +50,7 @@
 
             <TextView
                 android:id="@+id/my_status"
-                android:layout_width="fill_parent"
+                android:layout_width="236dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ellipsize="marquee"
@@ -55,10 +59,12 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="@string/label_peers" />
+        android:text="@string/label_peers"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal" />
 
     <View
         android:layout_width="fill_parent"
@@ -79,5 +85,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:text="@string/empty_message" />
+        android:text="@string/empty_message"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp" />
 </LinearLayout>

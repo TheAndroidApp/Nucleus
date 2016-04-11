@@ -249,16 +249,11 @@ public class MainActivity extends AppCompatActivity {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
-
-
-                    case R.id.stats:
-                        Toast.makeText(getApplicationContext(), "Stats Selected", Toast.LENGTH_SHORT).show();
-                        return true;
-
                     // For rest of the options we just show a toast on click
 
                     case R.id.location:
-                        Toast.makeText(getApplicationContext(), "Location Selected", Toast.LENGTH_SHORT).show();
+                        Intent location = new Intent(MainActivity.this,DirChooserFragment.class);
+                        startActivity(location);
                         return true;
                     case R.id.about:
                         Intent about_intent = new Intent(MainActivity.this, AboutUs.class);

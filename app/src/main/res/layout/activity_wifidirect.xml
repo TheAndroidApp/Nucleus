@@ -22,8 +22,24 @@
             android:id="@+id/frag_detail"
             class="com.nucleus.app.DeviceDetailFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="300dp">
             <!-- Preview: layout=@layout/device_detail -->
         </fragment>
+
+        <Button
+            android:id="@+id/btnDiscover"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/button_compress_background"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:text="Discover"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal" />
+
+
+
     </LinearLayout>
 </LinearLayout>

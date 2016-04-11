@@ -32,7 +32,7 @@ public class Utils {
         File directory = new File(
                 android.os.Environment.getExternalStorageDirectory()
                         + File.separator + AppConstant.PHOTO_ALBUM);
-
+        Log.v("Current Album",AppConstant.PHOTO_ALBUM);
         // check for directory
         if (directory.isDirectory()) {
             // getting list of file paths
@@ -50,7 +50,7 @@ public class Utils {
                     // check for supported file extension
                     if (IsSupportedFile(filePath)) {
                         // Add image path to array list
-
+                        Log.v("Current Album",filePath);
                         filePaths.add(filePath);
                     }
                 }
