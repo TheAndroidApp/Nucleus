@@ -1,3 +1,4 @@
+
 package com.nucleus.app;
 
 import android.content.Context;
@@ -33,6 +34,8 @@ import android.widget.TextView;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+
+import helper.AppConstant;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -250,7 +253,21 @@ public class MainActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
                     // For rest of the options we just show a toast on click
-
+                    case R.id.navGallery:
+                        AppConstant.PHOTO_ALBUM="DCIM/Camera";
+                        Intent startGallery = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(startGallery);
+                        return true;
+                    case R.id.navCompressed:
+                        AppConstant.PHOTO_ALBUM="Nucleus/Compressed Images";
+                        Intent startCompressed = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(startCompressed);
+                        return true;
+                    case R.id.navReceived:
+                        AppConstant.PHOTO_ALBUM="Nucleus/Received Images";
+                        Intent startReceived= new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(startReceived);
+                        return true;
                     case R.id.location:
                         Intent location = new Intent(MainActivity.this,DirChooserFragment.class);
                         startActivity(location);

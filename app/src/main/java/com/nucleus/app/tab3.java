@@ -40,6 +40,7 @@ public class tab3 extends Fragment {
         gridView = (GridView) view.findViewById(R.id.grid_view);
 //
 
+        AppConstant.PHOTO_ALBUM="Nucleus/Receivedd Images";
         utils = new Utils(getActivity());
 
         // Initilizing Grid View
@@ -80,11 +81,14 @@ public class tab3 extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            Toast.makeText(getActivity(), "TAB 3 SELECTED ", Toast.LENGTH_LONG).show();
+
+            Toast.makeText(getActivity(), "TAB 3 SELECTED ", Toast.LENGTH_SHORT).show();
             AppConstant.PHOTO_ALBUM="Nucleus/Received Images";
 
+            Log.v("Selected","Tab 3 selected");
         }else{
 
+            Log.v("Selected","Tab 3 NOT selected");
         }
     }
 

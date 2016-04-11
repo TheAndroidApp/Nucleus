@@ -3,6 +3,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="stats">Usage Stats</string>
     <string name="theme">Dark Theme</string>
+    <string name="gallery">Gallery</string>
+    <string name="cmprsdImg">Compressed Images</string>
+    <string name="rcvdImg">Received Images</string>
     <string name="location">Change Download Location</string>
     <string name="about">About Us</string>
     <string name="closeDrawer">Navigation View</string>
@@ -41,3 +44,4 @@
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
 </resources>
+

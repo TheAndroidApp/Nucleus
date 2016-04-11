@@ -37,7 +37,8 @@ public class tab2 extends Fragment {
         View view = inflater.inflate(R.layout.activity_grid_view, container, false);
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
-//
+
+        AppConstant.PHOTO_ALBUM="Nucleus/Compressed Images";
         utils = new Utils(getActivity());
 
         // Initilizing Grid View
@@ -78,10 +79,12 @@ public class tab2 extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            Toast.makeText(getActivity(), "TAB 2 SELECTED ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "TAB 2 SELECTED ", Toast.LENGTH_SHORT).show();
             AppConstant.PHOTO_ALBUM="Nucleus/Compressed Images";
+            Log.v("Selected","Tab 2 selected");
 
         }else{
+            Log.v("Selected","Tab 2 NOT selected");
         }
     }
 

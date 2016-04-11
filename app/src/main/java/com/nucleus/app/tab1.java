@@ -38,7 +38,6 @@ public class tab1 extends Fragment {
         View view = inflater.inflate(R.layout.activity_grid_view, container, false);
 
         gridView = (GridView) view.findViewById(R.id.grid_view);
-
         utils = new Utils(getActivity());
 
         // Initilizing Grid View
@@ -81,10 +80,12 @@ public class tab1 extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
 
-            Toast.makeText(getActivity(), "TAB 1 SELECTED ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "TAB 1 SELECTED ", Toast.LENGTH_SHORT).show();
 
+            Log.v("Selected", "Tab 1 selected");
         }else{
 
+            Log.v("Selected","Tab 1 NOT selected");
         }
     }
 

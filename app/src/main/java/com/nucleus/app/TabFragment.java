@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 public class TabFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3;
+    public static int int_items = 1;
 
     @Nullable
     @Override
@@ -69,10 +69,6 @@ public class TabFragment extends Fragment {
             switch (position) {
                 case 0:
                     return new tab1();
-                case 1:
-                    return new tab2();
-                case 2:
-                    return new tab3();
             }
             return null;
         }
@@ -94,28 +90,12 @@ public class TabFragment extends Fragment {
             switch (position) {
                 case 0:
                     return "Gallery";
-                case 1:
-                    return "Send Files";
-                case 2:
-                    return "Received Files";
             }
             return null;
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
 
-        // Make sure that we are currently visible
-        if (this.isVisible()) {
-            // If we are becoming invisible, then...
-            if (!isVisibleToUser) {
-                Log.d("MyFragment", "Not visible anymore.  Stopping audio.");
-                // TODO stop audio playback
-            }
-        }
-    }
 
 
 
