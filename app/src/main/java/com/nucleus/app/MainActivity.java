@@ -68,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private GridView gridView;
     private int columnWidth;
     Switch switchButton, switchButton2;
-    TextView textView, textView2;
+    TextView textView, textView2, folder_text;
+    String foldername;
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
 
@@ -149,6 +150,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getDrawable(R.drawable.ic_add_black_24dp));
 
+
+
+        folder_text = (TextView)findViewById(R.id.folder_text);
+        foldername = AppConstant.TAB_HEADING;
+        folder_text.setText(foldername);
 
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -284,19 +290,24 @@ public class MainActivity extends AppCompatActivity {
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
                     // For rest of the options we just show a toast on click
+
                     case R.id.navGallery:
                         AppConstant.PHOTO_ALBUM="DCIM/Camera";
                         Intent startGallery = new Intent(MainActivity.this,MainActivity.class);
+                        AppConstant.TAB_HEADING="Gallery";
+
                         startActivity(startGallery);
                         return true;
                     case R.id.navCompressed:
                         AppConstant.PHOTO_ALBUM="Nucleus/Compressed Images";
                         Intent startCompressed = new Intent(MainActivity.this,MainActivity.class);
+                        AppConstant.TAB_HEADING="Compressed Images";
                         startActivity(startCompressed);
                         return true;
                     case R.id.navReceived:
                         AppConstant.PHOTO_ALBUM="Nucleus/Received Images";
                         Intent startReceived= new Intent(MainActivity.this,MainActivity.class);
+                        AppConstant.TAB_HEADING="Received Images";
                         startActivity(startReceived);
                         return true;
                     case R.id.location:

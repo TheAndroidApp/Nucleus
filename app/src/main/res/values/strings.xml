@@ -14,10 +14,6 @@
     <string name="join">Join Group</string>
     <string name="camera">Camera</string>
     <string name="settings">Nucleus Settings</string>
-    <string name="group_name">GROUP NAME</string>
-    <string name="password">PASSWORD</string>
-    <string name="enter_pass">******</string>
-    <string name="confirm_pass">CONFIRM PASSWORD</string>
 
     <!--WiFi Direct String Values-->
 
