@@ -10,17 +10,17 @@
                 <item
                     android:id="@+id/navGallery"
                     android:checked="false"
-                    android:icon="@drawable/ic_get_app_black_24dp"
+                    android:icon="@drawable/ic_collections_black_24dp"
                     android:title="@string/gallery" />
                 <item
                     android:id="@+id/navCompressed"
                     android:checked="false"
-                    android:icon="@drawable/ic_get_app_black_24dp"
+                    android:icon="@drawable/ic_vertical_align_center_black_24dp"
                     android:title="@string/cmprsdImg" />
                 <item
                     android:id="@+id/navReceived"
                     android:checked="false"
-                    android:icon="@drawable/ic_get_app_black_24dp"
+                    android:icon="@drawable/ic_inbox_black_24dp"
                     android:title="@string/rcvdImg" />
             </group>
         </menu>
