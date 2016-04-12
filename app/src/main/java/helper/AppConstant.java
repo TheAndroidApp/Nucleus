@@ -20,10 +20,6 @@ public class AppConstant {
 
     public static String TAB_HEADING="Gallery";
 
-//    public static final String PHOTO_ALBUM2 = "Nucleus/Compressed Images";
-//    public static final String PHOTO_ALBUM3 = "Nucleus/Received Images";
-
-
     // supported file formats
     public static final List<String> FILE_EXTN = Arrays.asList("jpg", "jpeg",
             "png");

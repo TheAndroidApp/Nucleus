@@ -100,6 +100,7 @@ public class BitmapActivity extends Activity implements OnClickListener {
 
         adapter = new ImageListAdapter(this, cursor, true);
         listView.setAdapter(adapter);
+
         if (compressCheck.equals("101")) {
                 /*
                  * get actual file name and size of file, it will be send to socket and recieved at other device.
