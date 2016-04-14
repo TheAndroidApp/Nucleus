@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/PrimaryColor"
     android:paddingTop="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="10dp">
@@ -25,7 +26,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="?android:attr/listPreferredItemHeight"
-        android:background="?android:attr/activatedBackgroundIndicator"
+        android:background="@color/PrimaryColor"
         android:padding="3dip">
 
         <ImageView
@@ -39,7 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/PrimaryColor">
 
             <TextView
                 android:id="@+id/my_name"

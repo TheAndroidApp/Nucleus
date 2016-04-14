@@ -1,45 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/PrimaryColor">
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/PrimaryColor">
 
-        <fragment
-            android:id="@+id/frag_list"
-            class="com.nucleus.app.DeviceListFragment"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/phone_list_height">
-            <!-- Preview: layout=@layout/row_devices -->
-        </fragment>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/frag_detail"
-            class="com.nucleus.app.DeviceDetailFragment"
-            android:layout_width="match_parent"
-            android:layout_height="300dp">
-            <!-- Preview: layout=@layout/device_detail -->
-        </fragment>
+            <fragment
+                android:id="@+id/frag_list"
+                class="com.nucleus.app.DeviceListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/phone_list_height">
+                <!-- Preview: layout=@layout/row_devices -->
+            </fragment>
 
-        <Button
-            android:id="@+id/btnDiscover"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/button_compress_background"
-            android:paddingBottom="2dp"
-            android:paddingTop="2dp"
-            android:text="Discover"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal" />
+            <fragment
+                android:id="@+id/frag_detail"
+                class="com.nucleus.app.DeviceDetailFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+                <!-- Preview: layout=@layout/device_detail -->
+            </fragment>
+
+            <Button
+                android:id="@+id/btnDiscover"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/button_compress_background"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:text="Discover"
+                android:textColor="#ffffff"
+                android:layout_gravity="center_horizontal" />
+
+
+
+        </LinearLayout>
 
 
 
     </LinearLayout>
-</LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
+

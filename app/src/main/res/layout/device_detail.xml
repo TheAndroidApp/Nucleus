@@ -2,24 +2,27 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="30dp"
-    android:background="@drawable/details_view"
+    android:background="@color/PrimaryColor"
     android:orientation="horizontal"
     android:visibility="gone"
     android:padding="20dp"
     android:paddingLeft="20dp"
     android:paddingTop="20dp"
     android:paddingRight="20dp"
-    android:paddingBottom="20dp">
+    android:paddingBottom="20dp"
+    >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/PrimaryColor">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/PrimaryColor">
 
             <Button
                 android:id="@+id/btn_connect"
@@ -38,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/get_file_button"
-                android:visibility="gone" />
+                android:visibility="visible" />
         </LinearLayout>
 
         <TextView

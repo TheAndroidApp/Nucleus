@@ -54,6 +54,7 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
     private WifiP2pManager manager;
     private boolean isWifiP2pEnabled = false;
     private boolean retryChannel = false;
+    public static final String EXTRAS_FILE_PATH = "file_url";
 
     private final IntentFilter intentFilter = new IntentFilter();
     private Channel channel;
@@ -71,6 +72,8 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifidirect);
+
+
         btnDiscover = (Button) findViewById(R.id.btnDiscover);
         btnDiscover.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +116,8 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
         manager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         channel = manager.initialize(this, getMainLooper(), null);
     }
+
+
 
 
     /**
@@ -171,6 +176,8 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
             @Override
             public void onSuccess() {
                 // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
+
+
             }
 
             @Override

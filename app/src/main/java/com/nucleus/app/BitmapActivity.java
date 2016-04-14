@@ -201,6 +201,7 @@ public class BitmapActivity extends Activity implements OnClickListener {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(getBaseContext(), WiFiDirectActivity.class);
+                            intent.putExtra(WiFiDirectActivity.EXTRAS_FILE_PATH, filePath);
                             startActivity(intent);
                         }
                     });
