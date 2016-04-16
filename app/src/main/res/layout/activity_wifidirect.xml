@@ -2,57 +2,50 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/PrimaryColor">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/PrimaryColor">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <fragment
                 android:id="@+id/frag_list"
                 class="com.nucleus.app.DeviceListFragment"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/phone_list_height">
+                android:layout_height="@dimen/phone_list_height"
+                android:layout_weight="1.5">
                 <!-- Preview: layout=@layout/row_devices -->
             </fragment>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/PrimaryColor"
+                android:gravity="center_vertical" />
+            <Button
+                android:id="@+id/btnDiscover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discover"
+                android:textColor="@color/PrimaryColor"
+                android:layout_gravity="center_horizontal"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:textStyle="bold" />
             <fragment
                 android:id="@+id/frag_detail"
                 class="com.nucleus.app.DeviceDetailFragment"
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="wrap_content">
                 <!-- Preview: layout=@layout/device_detail -->
             </fragment>
-
-            <Button
-                android:id="@+id/btnDiscover"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/button_compress_background"
-                android:paddingBottom="2dp"
-                android:paddingTop="2dp"
-                android:text="Discover"
-                android:textColor="#ffffff"
-                android:layout_gravity="center_horizontal" />
-
-
-
         </LinearLayout>
-
-
-
     </LinearLayout>
-
 </android.support.v4.widget.DrawerLayout>
 

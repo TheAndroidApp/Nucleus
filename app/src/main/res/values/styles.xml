@@ -1,34 +1,29 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">@color/PrimaryColor</item>
-        <item name="android:colorPrimaryDark">@color/PrimaryColor</item>
+        <item name="android:colorPrimary">@color/primary_material_light</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark_material_light</item>
         <item name="android:textColorPrimary">@color/LightTextColor</item>
+        <item name="android:listDivider">@color/Silver</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/PrimaryColor</item>
+        <item name="android:statusBarColor">@color/PrimaryDarkColor</item>
         <item name="android:background">@color/DarkTextColor</item>
+        <item name="colorAccent">@color/PrimaryColor</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <!-- Dark theme base colours -->
-        <item name="colorPrimary">@color/PrimaryDarkColor</item>
-        <item name="colorPrimaryDark">@color/PrimaryDarkColor</item>
-        <item name="android:listDivider">@color/Silver</item>
+        <item name="colorPrimary">@color/primary_material_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
         <item name="android:textColorPrimary">@color/DarkTextColor</item>
+        <item name="android:listDivider">@color/Silver</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/PrimaryDarkColor</item>
         <item name="android:colorBackground">@color/Black</item>
+        <item name="colorAccent">@color/PrimaryColor</item>
     </style>
-
-    <style name="tabTextStyle">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-
 </resources>

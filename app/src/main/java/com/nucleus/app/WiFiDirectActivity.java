@@ -84,7 +84,7 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
                 }
                 final DeviceListFragment fragment = (DeviceListFragment) getFragmentManager()
                         .findFragmentById(R.id.frag_list);
-                fragment.onInitiateDiscovery();
+                               fragment.onInitiateDiscovery();
                 manager.discoverPeers(channel, new WifiP2pManager.ActionListener() {
 
                     @Override
@@ -102,11 +102,6 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
             }
 
         });
-        /*AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-       mAdView.setAdSize(AdSize.SMART_BANNER);
-        mAdView.loadAd(adRequest);*/
-        // add necessary intent values to be matched.
 
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);

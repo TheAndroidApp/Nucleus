@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="30dp"
-    android:background="@color/PrimaryColor"
+    android:background="#fff"
     android:orientation="horizontal"
     android:visibility="gone"
     android:padding="20dp"
@@ -16,54 +16,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/PrimaryColor">
+        android:background="#fff">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:background="@color/PrimaryColor">
+            android:background="#fff">
 
             <Button
                 android:id="@+id/btn_connect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/connect_peer_button" />
+                android:text="@string/connect_peer_button"
+                android:textColor="@color/PrimaryColor"
+                android:layout_gravity="center_horizontal"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:visibility="visible"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_disconnect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/disconnect_peer_button" />
+                android:text="@string/disconnect_peer_button"
+                android:textColor="@color/PrimaryColor"
+                android:layout_gravity="center_horizontal"
+                android:visibility="visible"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/btn_start_client"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/get_file_button"
-                android:visibility="visible" />
+                android:textColor="@color/PrimaryColor"
+                android:layout_gravity="center_horizontal"
+                android:visibility="visible"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <TextView
             android:id="@+id/device_address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/DarkTextColor"/>
 
         <TextView
             android:id="@+id/device_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/DarkTextColor"/>
 
         <TextView
             android:id="@+id/group_owner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/DarkTextColor"/>
 
         <TextView
             android:id="@+id/group_ip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/DarkTextColor"/>
     </LinearLayout>
-
-
 </FrameLayout>
