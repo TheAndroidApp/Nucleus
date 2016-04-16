@@ -51,6 +51,7 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
 
 
     public static final String TAG = "wifidirectdemo";
+    public View mContentView;
     private WifiP2pManager manager;
     private boolean isWifiP2pEnabled = false;
     private boolean retryChannel = false;
@@ -171,7 +172,6 @@ public class WiFiDirectActivity extends Activity implements ChannelListener, Dev
             @Override
             public void onSuccess() {
                 // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
-
 
             }
 

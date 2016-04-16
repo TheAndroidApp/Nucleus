@@ -20,9 +20,10 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#fff">
+            android:background="#fff"
+            android:weightSum="3">
 
             <Button
                 android:id="@+id/btn_connect"
@@ -33,7 +34,8 @@
                 android:layout_gravity="center_horizontal"
                 style="@android:style/Widget.Material.Button.Borderless"
                 android:visibility="visible"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/btn_disconnect"
@@ -44,7 +46,8 @@
                 android:layout_gravity="center_horizontal"
                 android:visibility="visible"
                 style="@android:style/Widget.Material.Button.Borderless"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/btn_start_client"
@@ -55,7 +58,8 @@
                 android:layout_gravity="center_horizontal"
                 android:visibility="visible"
                 style="@android:style/Widget.Material.Button.Borderless"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_weight="1"/>
         </LinearLayout>
 
         <TextView

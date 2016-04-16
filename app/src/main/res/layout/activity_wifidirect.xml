@@ -14,21 +14,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="3">
+            android:weightSum="4">
 
             <fragment
                 android:id="@+id/frag_list"
                 class="com.nucleus.app.DeviceListFragment"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/phone_list_height"
-                android:layout_weight="1.5">
+                android:layout_height="250dp"
+                android:layout_weight="3">
                 <!-- Preview: layout=@layout/row_devices -->
             </fragment>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/PrimaryColor"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"/>
+
             <Button
                 android:id="@+id/btnDiscover"
                 android:layout_width="wrap_content"
@@ -37,12 +38,20 @@
                 android:textColor="@color/PrimaryColor"
                 android:layout_gravity="center_horizontal"
                 style="@android:style/Widget.Material.Button.Borderless"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+            />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/PrimaryColor"
+                android:gravity="center_vertical"
+                />
             <fragment
                 android:id="@+id/frag_detail"
                 class="com.nucleus.app.DeviceDetailFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="100dp"
+                android:layout_weight="2.50">
                 <!-- Preview: layout=@layout/device_detail -->
             </fragment>
         </LinearLayout>
