@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="PrimaryColor">#007EE5</color>
     <color name="PrimaryDarkColor">#005499</color>
     <color name="DarkTextColor">#FFFFFF</color>
@@ -7,9 +8,8 @@
     <color name="Silver">#C0C0C0</color>
     <color name="Black">#000000</color>
 
-
     <!-- WiFi Direct Values-->
-
     <color name="status_bar_color">#FF000000</color>
     <color name="layout_border_color">#FF111111</color>
+
 </resources>

@@ -15,24 +15,24 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/tool_bar" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@color/PrimaryColor">
-                <TextView
+
+            <TextView
+                android:id="@+id/folder_text"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:textAllCaps="true"
-                android:gravity="center"
-                android:id="@+id/folder_text"
-                android:layout_marginBottom="8dp"
-                android:text="Gallery"
-                android:textColor="#fff"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Gallery"
                 android:textAlignment="center"
-                />
+                android:textAllCaps="true"
+                android:textColor="#fff" />
         </LinearLayout>
-
 
         <include layout="@layout/activity_grid_view"></include>
 
@@ -45,8 +45,6 @@
 
     </LinearLayout>
 
-
-
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -57,5 +55,6 @@
         app:itemIconTint="@drawable/state_list"
         app:itemTextColor="@drawable/state_list"
         app:menu="@menu/drawer" />
+
 </android.support.v4.widget.DrawerLayout>
 

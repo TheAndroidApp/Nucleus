@@ -39,5 +39,6 @@
     <string name="image_content">Image</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
+    <string name="compress">Compress</string>
 </resources>
 

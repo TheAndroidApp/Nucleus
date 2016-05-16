@@ -4,86 +4,85 @@
     android:layout_height="30dp"
     android:background="#fff"
     android:orientation="horizontal"
-    android:visibility="gone"
     android:padding="20dp"
-    android:paddingLeft="20dp"
-    android:paddingTop="20dp"
-    android:paddingRight="20dp"
     android:paddingBottom="20dp"
-    >
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:visibility="gone">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#fff">
+        android:background="#fff"
+        android:orientation="vertical">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:background="#fff"
+            android:orientation="horizontal"
             android:weightSum="3">
 
             <Button
                 android:id="@+id/btn_connect"
+                style="@android:style/Widget.Material.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
                 android:text="@string/connect_peer_button"
                 android:textColor="@color/PrimaryColor"
-                android:layout_gravity="center_horizontal"
-                style="@android:style/Widget.Material.Button.Borderless"
-                android:visibility="visible"
                 android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/btn_disconnect"
+                style="@android:style/Widget.Material.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
                 android:text="@string/disconnect_peer_button"
                 android:textColor="@color/PrimaryColor"
-                android:layout_gravity="center_horizontal"
-                android:visibility="visible"
-                style="@android:style/Widget.Material.Button.Borderless"
                 android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/btn_start_client"
+                style="@android:style/Widget.Material.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
                 android:text="@string/get_file_button"
                 android:textColor="@color/PrimaryColor"
-                android:layout_gravity="center_horizontal"
-                android:visibility="visible"
-                style="@android:style/Widget.Material.Button.Borderless"
                 android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:visibility="visible" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/device_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/DarkTextColor"/>
+            android:textColor="@color/DarkTextColor" />
 
         <TextView
             android:id="@+id/device_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/DarkTextColor"/>
+            android:textColor="@color/DarkTextColor" />
 
         <TextView
             android:id="@+id/group_owner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/DarkTextColor"/>
+            android:textColor="@color/DarkTextColor" />
 
         <TextView
             android:id="@+id/group_ip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/DarkTextColor"/>
+            android:textColor="@color/DarkTextColor" />
     </LinearLayout>
 </FrameLayout>
