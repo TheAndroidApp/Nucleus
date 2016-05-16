@@ -5,7 +5,6 @@ package adapter;
  */
 
 
-
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -32,7 +31,7 @@ public class FullScreenImageAdapter extends PagerAdapter {
     private ArrayList<String> _imagePaths;
     private LayoutInflater inflater;
 
-    // constructor
+    // Constructor for the Adapter class
     public FullScreenImageAdapter(Activity activity,
                                   ArrayList<String> imagePaths) {
         this._activity = activity;
@@ -70,7 +69,7 @@ public class FullScreenImageAdapter extends PagerAdapter {
         Bitmap bitmap = BitmapFactory.decodeFile(_imagePaths.get(position), options);
         imgDisplay.setImageBitmap(bitmap);
 
-        // close button click event
+        // Close button click listener. Stops the full screen activity.
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +77,8 @@ public class FullScreenImageAdapter extends PagerAdapter {
             }
         });
 
-        btnCompress.setOnClickListener(new View.OnClickListener(){
+        // Compress button listener. Image path is obtained and send to the CompressImage activity.
+        btnCompress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("imgpath", _imagePaths.get(position));
@@ -87,7 +87,6 @@ public class FullScreenImageAdapter extends PagerAdapter {
                 compressImage.putExtra("IMAGE_PATH", _imagePaths.get(position));
                 v.getContext().startActivity(compressImage);
             }
-
         });
 
         ((ViewPager) container).addView(viewLayout);
@@ -98,6 +97,5 @@ public class FullScreenImageAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         ((ViewPager) container).removeView((RelativeLayout) object);
-
     }
 }

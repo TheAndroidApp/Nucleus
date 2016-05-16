@@ -28,8 +28,7 @@ public class GridViewImageAdapter extends BaseAdapter {
     private ArrayList<String> _filePaths = new ArrayList<String>();
     private int imageWidth;
 
-    public GridViewImageAdapter(Activity activity, ArrayList<String> filePaths,
-                                int imageWidth) {
+    public GridViewImageAdapter(Activity activity, ArrayList<String> filePaths, int imageWidth) {
         this._activity = activity;
         this._filePaths = filePaths;
         this.imageWidth = imageWidth;
@@ -59,67 +58,67 @@ public class GridViewImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        // get screen dimensions
-        Bitmap image = decodeFile(_filePaths.get(position), imageWidth,
-                imageWidth);
+        // Get screen dimensions, scale the image accordingly.
+        Bitmap image = decodeFile(_filePaths.get(position), imageWidth, imageWidth);
 
+        //Set image in the ImageView
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(imageWidth,
-                imageWidth));
+        imageView.setLayoutParams(new GridView.LayoutParams(imageWidth, imageWidth));
         imageView.setImageBitmap(image);
 
-        // image view click listener
+        // Image view click listener
         imageView.setOnClickListener(new OnImageClickListener(position));
 
         return imageView;
     }
 
+    // Grid view image click listener. Full screen activity is started on selecting an image.
     class OnImageClickListener implements OnClickListener {
 
         int _postion;
 
-        // constructor
+        // Constructor
         public OnImageClickListener(int position) {
             this._postion = position;
         }
 
+        // Launch full screen activity when an image is selected from GridView.
         @Override
         public void onClick(View v) {
-            // on selecting grid view image
-            // launch full screen activity
             Intent i = new Intent(_activity, FullScreenViewActivity.class);
             i.putExtra("position", _postion);
             _activity.startActivity(i);
         }
-
     }
 
     /*
-     * Resizing image size
+     * Resize the actual image size to fit in the screen.
+     * First the image is decoded and the required scale is obtained.
+     * Then the scaled image is decoded & returned.
      */
     public static Bitmap decodeFile(String filePath, int WIDTH, int HIGHT) {
         try {
-
             File f = new File(filePath);
 
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(new FileInputStream(f), null, o);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(new FileInputStream(f), null, options);
 
             final int REQUIRED_WIDTH = WIDTH;
             final int REQUIRED_HIGHT = HIGHT;
             int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_WIDTH
-                    && o.outHeight / scale / 2 >= REQUIRED_HIGHT)
+
+            while (options.outWidth / scale / 2 >= REQUIRED_WIDTH && options.outHeight / scale / 2 >= REQUIRED_HIGHT)
                 scale *= 2;
 
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
+            BitmapFactory.Options options2 = new BitmapFactory.Options();
+            options2.inSampleSize = scale;
+
+            return BitmapFactory.decodeStream(new FileInputStream(f), null, options2);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return null;
     }
-
 }

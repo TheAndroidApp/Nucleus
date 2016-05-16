@@ -3,6 +3,7 @@ package helper;
 /**
  * Created by Anand.M.P on 2/22/2016.
  */
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -20,54 +21,51 @@ public class Utils {
     private Context _context;
     //private int tabPosition = getSelectedTabPosition();
 
-    // constructor
+    // Constructor
     public Utils(Context context) {
         this._context = context;
     }
 
     // Reading file paths from SDCard
     public ArrayList<String> getFilePaths() {
-        ArrayList<String> filePaths = new ArrayList<String>();
 
-        File directory = new File(
-                android.os.Environment.getExternalStorageDirectory()
-                        + File.separator + AppConstant.PHOTO_ALBUM);
-        Log.v("Current Album",AppConstant.PHOTO_ALBUM);
-        // check for directory
+        ArrayList<String> filePaths = new ArrayList<String>();
+        File directory = new File(android.os.Environment.getExternalStorageDirectory() + File.separator + AppConstant.PHOTO_ALBUM);
+
+        Log.v("Current Album", AppConstant.PHOTO_ALBUM);
+
+        // Check if it is a valid Directory.
         if (directory.isDirectory()) {
-            // getting list of file paths
+            // Get the list of file paths into an array.
             File[] listFiles = directory.listFiles();
 
-            // Check for count
+            // If the directory is not empty, do this.
             if (listFiles.length > 0) {
 
-                // loop through all files
+                // Loop through all files
                 for (int i = 0; i < listFiles.length; i++) {
 
-                    // get file path
+                    // Get file path
                     String filePath = listFiles[i].getAbsolutePath();
 
-                    // check for supported file extension
+                    // Check for supported file extension
                     if (IsSupportedFile(filePath)) {
                         // Add image path to array list
-                        Log.v("Current Album",filePath);
+                        Log.v("Current Album", filePath);
                         filePaths.add(filePath);
                     }
                 }
             } else {
-                // image directory is empty
-                Toast.makeText(
-                        _context,
-                        AppConstant.PHOTO_ALBUM
-                                + " is empty. Please load some images in it !",
+                // Image directory is empty
+                Toast.makeText(_context, AppConstant.PHOTO_ALBUM + " is empty. Please load some images in it !",
                         Toast.LENGTH_LONG).show();
             }
 
         } else {
+            // If a valid directory is not available, show alerts to user.
             AlertDialog.Builder alert = new AlertDialog.Builder(_context);
             alert.setTitle("Error!");
-            alert.setMessage(android.os.Environment.getExternalStorageDirectory()
-                    + File.separator + AppConstant.PHOTO_ALBUM
+            alert.setMessage(android.os.Environment.getExternalStorageDirectory() + File.separator + AppConstant.PHOTO_ALBUM
                     + " directory path is not valid! Please set the image directory name AppConstant.java class");
             alert.setPositiveButton("OK", null);
             alert.show();
@@ -76,29 +74,28 @@ public class Utils {
         return filePaths;
     }
 
-    // Check supported file extensions
+    // To check for supported file extensions. Supported file extension are jpg, jpeg, png.
     private boolean IsSupportedFile(String filePath) {
-        String ext = filePath.substring((filePath.lastIndexOf(".") + 1),
-                filePath.length());
+        String ext = filePath.substring((filePath.lastIndexOf(".") + 1), filePath.length());
 
-        if (AppConstant.FILE_EXTN
-                .contains(ext.toLowerCase(Locale.getDefault())))
+        //checks if the extensions are the same.
+        if (AppConstant.FILE_EXTN.contains(ext.toLowerCase(Locale.getDefault())))
             return true;
         else
             return false;
-
     }
 
     /*
-     * getting screen width
+     * To get the screen width.
      */
     public int getScreenWidth() {
+
         int columnWidth;
-        WindowManager wm = (WindowManager) _context
-                .getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) _context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
 
         final Point point = new Point();
+
         try {
             display.getSize(point);
         } catch (java.lang.NoSuchMethodError ignore) { // Older device
