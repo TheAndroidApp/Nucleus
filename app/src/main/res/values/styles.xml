@@ -27,4 +27,5 @@
         <item name="android:colorBackground">@color/Black</item>
         <item name="colorAccent">@color/PrimaryColor</item>
     </style>
+
 </resources>

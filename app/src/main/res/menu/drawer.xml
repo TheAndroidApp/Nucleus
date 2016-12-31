@@ -39,7 +39,7 @@
                 <item
                     android:id="@+id/location"
                     android:checked="false"
-                    android:icon="@drawable/ic_get_app_black_24dp"
+                    android:icon="@drawable/ic_folder_open_black_24dp"
                     android:title="@string/location" />
 
                 <item
