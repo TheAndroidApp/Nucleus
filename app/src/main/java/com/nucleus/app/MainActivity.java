@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /* Navigation Drawer Functions Start Here. Please do not change! */
+        /* Navigation Drawer Functions */
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
